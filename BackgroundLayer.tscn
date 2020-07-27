@@ -1,0 +1,19 @@
+[gd_scene format=2]
+
+[node name="BackgroundLayer" type="CanvasLayer"]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+light_mask = 524288
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -526.0
+margin_top = -311.0
+margin_right = 517.0
+margin_bottom = 304.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}

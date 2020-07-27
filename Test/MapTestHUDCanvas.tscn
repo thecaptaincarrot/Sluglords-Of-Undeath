@@ -1,0 +1,241 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://HUD/GeneralHUD.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Test/Scripts/TurnPanel.gd" type="Script" id=2]
+[ext_resource path="res://Test/Scripts/NewMapPanel.gd" type="Script" id=3]
+[ext_resource path="res://Test/Scripts/ResourcesPanel.gd" type="Script" id=4]
+
+
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.219608, 0.219608, 0.219608, 0.933333 )
+
+[node name="MapTestHUDCanvas" type="CanvasLayer"]
+
+[node name="GeneralHUD" parent="." instance=ExtResource( 1 )]
+margin_left = 0.735107
+margin_right = 0.735107
+mouse_filter = 2
+
+[node name="RemapHUDButton" type="Button" parent="."]
+margin_left = 6.10165
+margin_top = 5.16316
+margin_right = 96.1017
+margin_bottom = 50.1632
+text = "Remap"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewMapPanel" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -145.0
+margin_top = -175.0
+margin_right = 151.0
+margin_bottom = 139.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" type="Button" parent="NewMapPanel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -20.0
+margin_bottom = 20.0
+text = "X"
+
+[node name="Title" type="Label" parent="NewMapPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -86.0
+margin_right = 86.0
+margin_bottom = 14.0
+text = "Choose Remap Parameters"
+
+[node name="HexSize" type="Label" parent="NewMapPanel"]
+margin_left = 25.2101
+margin_top = 75.6302
+margin_right = 130.21
+margin_bottom = 89.6302
+text = "Hex Size (Pixels)"
+
+[node name="PixelSelect" type="SpinBox" parent="NewMapPanel/HexSize"]
+margin_left = 154.412
+margin_top = -8.82352
+margin_right = 228.412
+margin_bottom = 15.1765
+value = 32.0
+rounded = true
+suffix = " px"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MinIslandSize" type="Label" parent="NewMapPanel"]
+margin_left = 25.21
+margin_top = 105.63
+margin_right = 130.21
+margin_bottom = 119.63
+text = "Min Island Size"
+
+[node name="MinIslandSelect" type="SpinBox" parent="NewMapPanel/MinIslandSize"]
+margin_left = 154.412
+margin_top = -8.82352
+margin_right = 228.412
+margin_bottom = 15.1765
+value = 4.0
+rounded = true
+suffix = "Hex"
+
+[node name="MaxIslandSize" type="Label" parent="NewMapPanel"]
+margin_left = 25.21
+margin_top = 135.63
+margin_right = 130.21
+margin_bottom = 149.63
+text = "Max Island Size"
+
+[node name="MaxIslandSelect" type="SpinBox" parent="NewMapPanel/MaxIslandSize"]
+margin_left = 154.412
+margin_top = -8.82352
+margin_right = 228.412
+margin_bottom = 15.1765
+value = 8.0
+rounded = true
+suffix = "Hex"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MapSize" type="Label" parent="NewMapPanel"]
+margin_left = 25.21
+margin_top = 165.63
+margin_right = 130.21
+margin_bottom = 179.63
+text = "Map Size (radius)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MapSizeSelect" type="SpinBox" parent="NewMapPanel/MapSize"]
+margin_left = 154.412
+margin_top = -8.82352
+margin_right = 228.412
+margin_bottom = 15.1765
+value = 7.0
+rounded = true
+suffix = "Hex"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IslandSeparation" type="Label" parent="NewMapPanel"]
+margin_left = 25.21
+margin_top = 195.63
+margin_right = 130.21
+margin_bottom = 209.63
+text = "Island Separation"
+
+[node name="SeparationSelect" type="SpinBox" parent="NewMapPanel/IslandSeparation"]
+margin_left = 154.412
+margin_top = -8.82352
+margin_right = 228.412
+margin_bottom = 15.1765
+value = 1.0
+rounded = true
+suffix = "Hex"
+
+[node name="Remap2" type="Button" parent="NewMapPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -81.444
+margin_top = -39.6855
+margin_right = 81.556
+margin_bottom = -19.6855
+text = "Remap (New Algorithm)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResourcesPanel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -270.5
+margin_right = 270.5
+margin_bottom = 29.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gold" type="Label" parent="ResourcesPanel"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_right = 40.0
+margin_bottom = 7.0
+text = "Gold:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Corpses" type="Label" parent="ResourcesPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -29.5
+margin_top = -7.0
+margin_right = 29.5
+margin_bottom = 7.0
+text = "Corpses: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Contagion" type="Label" parent="ResourcesPanel"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -107.0
+margin_top = -7.0
+margin_bottom = 7.0
+text = "Contagion:          "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TurnPanel" type="Panel" parent="."]
+margin_left = 122.0
+margin_top = 2.0
+margin_right = 219.0
+margin_bottom = 19.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Turn" type="Label" parent="TurnPanel"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Turn: 1"
+
+[node name="NextTurn" type="Button" parent="."]
+margin_left = 6.0
+margin_top = 564.0
+margin_right = 121.0
+margin_bottom = 594.0
+text = "Next Turn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="RemapHUDButton" to="NewMapPanel" method="_on_RemapHUDButton_pressed"]
+[connection signal="pressed" from="NewMapPanel/ExitButton" to="NewMapPanel" method="_on_ExitButton_pressed"]

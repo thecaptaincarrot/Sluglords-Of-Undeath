@@ -1,0 +1,67 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://CharacterCreationSprites/Mouth2.png" type="Texture" id=1]
+[ext_resource path="res://CharacterCreationSprites/Mouth0.png" type="Texture" id=2]
+[ext_resource path="res://CharacterCreationSprites/eyes2.png" type="Texture" id=3]
+[ext_resource path="res://CharacterCreationSprites/eyes0.png" type="Texture" id=4]
+[ext_resource path="res://CharacterCreationSprites/Mouth1.png" type="Texture" id=5]
+[ext_resource path="res://CharacterCreationSprites/eyes1.png" type="Texture" id=6]
+[ext_resource path="res://CharacterCreationSprites/Body.png" type="Texture" id=7]
+[ext_resource path="res://CharacterCreationSprites/Mouth3.png" type="Texture" id=8]
+[ext_resource path="res://CharacterCreationSprites/Background.png" type="Texture" id=9]
+[ext_resource path="res://CharacterCreationSprites/Hats1.png" type="Texture" id=10]
+[ext_resource path="res://CharacterCreationSprites/Hats0.png" type="Texture" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 0.9
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 0.4
+} ]
+
+[node name="CharacterPortrait" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 9 )
+centered = false
+
+[node name="Body" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="Eyes" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+playing = true
+centered = false
+
+[node name="Mouth" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+frame = 1
+playing = true
+centered = false
+
+[node name="Hats" type="AnimatedSprite" parent="."]
+visible = false
+frames = SubResource( 3 )
+playing = true
+centered = false
+
+[node name="Clothing" type="AnimatedSprite" parent="."]
+centered = false
