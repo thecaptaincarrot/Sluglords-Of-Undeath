@@ -49,4 +49,7 @@ func change_type(change_to):
 			gold_production = 0
 			corpse_production = 5
 			contagion_production = 10
-		
+
+
+func get_description():
+	pass

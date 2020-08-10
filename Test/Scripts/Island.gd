@@ -11,6 +11,9 @@ var suffixes =  ["or", "", "as", "en", "auw"]
 
 var faction_owner = null
 
+var undead = []
+var undead_queue = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -22,7 +25,7 @@ func _ready():
 
 
 func init_island():
-	island_name = generate_name()
+	island_name = _generate_name()
 	name = island_name
 	var best_position = Vector2(-9999,9999)
 	
@@ -65,17 +68,7 @@ func init_pillar():
 	$IslandNameLabel.text = island_name
 
 
-func get_hexes():
-	return hexes
-
-
-func clear_owner():
-	faction_owner = null
-	for hex in hexes:
-		hex.faction_owner = null
-
-
-func generate_name():
+func _generate_name():
 	randomize()
 	var card_pick = randi() % len(prefixes)
 	var prefix = prefixes[card_pick]
@@ -87,6 +80,31 @@ func generate_name():
 	var suffix = suffixes[card_pick]
 	
 	return prefix + midfix + suffix
+
+
+func get_hexes():
+	return hexes
+
+
+func get_gold_production():
+	
+	for hex in hexes:
+		pass
+	
+	
+func get_corpse_production():
+	pass
+	
+	
+func get_contagion_production():
+	pass
+
+
+func clear_owner():
+	faction_owner = null
+	for hex in hexes:
+		hex.faction_owner = null
+
 
 
 func axial_to_pixel(q,r,size):

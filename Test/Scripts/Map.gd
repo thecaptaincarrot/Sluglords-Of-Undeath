@@ -32,7 +32,7 @@ func _process(_delta):
 
 
 func build_map_old():
-	pass
+
 #	#1. an island is between min and max in size
 #	#2. an island cannot touch another island
 #	#3. an island cannot be in or touch the center 3 tiles
@@ -157,6 +157,7 @@ func build_map_old():
 #
 #		#7. repeat until there are no more eligible tiles then break.
 #		#Commiting islands means to remove all adjacent tiles as being eligible
+	pass
 
 
 func build_map_new():
@@ -178,7 +179,7 @@ func build_map_new():
 							new_island.hexes.append(hex_map[q][r])
 							hex_map[q][r].type = hex_map[q][r].PILLAR
 							new_island.init_pillar()
-							add_child(new_island)
+							$Island.add_child(new_island)
 							islands.append(new_island)
 						eligible_tiles[q][r] = null
 	#edge is not available
@@ -254,7 +255,7 @@ func build_map_new():
 			#If yes, commit island. in this case, set it all to land and remove adjacent (<= 1) tiles from eligible tiles
 			new_island.hexes = new_island_array
 			new_island.init_island()
-			add_child(new_island)
+			$Island.add_child(new_island)
 			islands.append(new_island)
 			for hex in new_island_array:
 				hex.island = new_island
@@ -296,9 +297,12 @@ func clear_map():
 		island.clear_owner()
 	islands.clear()
 	
-	for N in get_children():
+	for N in $Hex.get_children():
 		N.queue_free()
-	
+
+	for N in $Island.get_children():
+		N.queue_free()
+
 	for q in range(map_size * -1, map_size + 1):
 		var new_dict = {}
 		for r in range(map_size * -1, map_size + 1):
@@ -306,10 +310,10 @@ func clear_map():
 			new_hex.axial.x = q
 			new_hex.axial.y = r
 			new_hex.axial_to_cube()
-			new_hex.size = size - 1 #pixel barrier
+			new_hex.size = size - 2 #pixel barrier
 			new_hex.position = axial_to_pixel(q,r)
 			new_dict[r] = new_hex
-			add_child(new_hex)
+			$Hex.add_child(new_hex)
 			new_hex.connect("clicked",get_parent(), "_on_hex_clicked")
 		hex_map[q] = new_dict
 		
@@ -347,6 +351,6 @@ func get_neighbors(hex):
 	return hex_neighbors
 
 func get_islands():
-	return get_children()
+	return $Island.get_children()
 
 

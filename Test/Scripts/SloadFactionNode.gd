@@ -67,18 +67,24 @@ func update_production():
 
 func collect_production():
 	for hex in territory_hexes:
+		hex.update_production()
 		gold += hex.gold_production
 		corpses += hex.corpse_production
 		contagion += hex.contagion_production
-		print("Collected gold in an amount of: " + str(gold))
 
 
 func end_of_turn():
 	#check timed events
 	#generate an event maybe
 	#move armies and resolve battles
-	print("Turn Ended Successfully")
 	update_production()
 	collect_production()
 	#construct buildings
 
+
+func build_payment(building):
+	#should we double check right now to make sure the resources are available?
+	#Maybe
+	gold = gold - building.gold_cost
+	corpses = corpses - building.corpse_cost
+	contagion = contagion - building.contagion_cost

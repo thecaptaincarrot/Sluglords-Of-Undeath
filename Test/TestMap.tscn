@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Test/Scripts/Map.gd" type="Script" id=1]
+[ext_resource path="res://Test/Island.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Test/Hex.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Test/HexNode.gd" type="Script" id=4]
+
+[node name="Map" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+Hex = ExtResource( 3 )
+Island = ExtResource( 2 )
+
+[node name="Hex" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Island" type="Node2D" parent="."]

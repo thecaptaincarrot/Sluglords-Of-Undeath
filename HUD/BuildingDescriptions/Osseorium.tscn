@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://HUD/BuildingDescription.tscn" type="PackedScene" id=1]
+
+[node name="BuildingDescription" instance=ExtResource( 1 )]
+target = "Osseorium"
