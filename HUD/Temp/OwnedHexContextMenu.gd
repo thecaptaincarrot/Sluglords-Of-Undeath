@@ -37,6 +37,7 @@ func initialize_menu(hex,faction):
 		$MarginContainer/VBoxContainer/HBoxContainer/BuildingInfo/VBoxContainer/BuildingName.text = "*N O N E*"
 		$MarginContainer/VBoxContainer/HBoxContainer/BuildingInfo/VBoxContainer/BuildingDescription.hide()
 	else:
+		$MarginContainer/VBoxContainer/HBoxContainer/BuildingInfo/VBoxContainer/BuildingDescription.show()
 		if hex.building_turns_left > 0:
 			$MarginContainer/VBoxContainer/HBoxContainer/BuildingInfo/VBoxContainer/BuildingName.text = hex.building.identity
 			$MarginContainer/VBoxContainer/HBoxContainer/BuildingInfo/VBoxContainer/BuildingDescription.text = "In Progress:\nTurns left: " + str(hex.building_turns_left)
@@ -49,10 +50,8 @@ func initialize_menu(hex,faction):
 func _on_BuildButton_pressed():
 	var new_window = build_panel.instance()
 	new_window.rect_position.x = rect_size.x
-	print(new_window.rect_position.x)
 	new_window.rect_size.y = rect_size.y
 	new_window.connect("mouse_entered",get_parent(),"_on_TabContainer_mouse_entered")
 	new_window.connect("mouse_exited",get_parent(),"_on_TabContainer_mouse_exited")
 	new_window.check_enabled(player_faction, target_hex)
 	get_parent().get_parent().add_child(new_window)
-	print(new_window.rect_position.x)

@@ -3,7 +3,7 @@ extends "res://Undead/undead_blank.gd"
 
 func _ready():
 	identity = "Skeleton"
-	description = "With the remaining flesh stripped away by industrious insects, the remaining bones take much more readily to necromantic enchantments creating stronger thralls."
+	description = "With the superfluous flesh stripped away by industrious insects, the remaining bones take much more readily to necromantic enchantments creating stronger thralls."
 
 	icon = "res://Undead/images/Skeleton.png"
 	#The number in the horde, which will reduce as it takes damage

@@ -17,7 +17,7 @@ func _ready():
 	
 	recruitment_turns = 3
 	
-	gold_cost = 100
+	gold_cost = 1000
 	corpses_cost = 10 #This should never be 0 (unless you're summoning daedra?)
 	#usually equal to the troop size unless it's a big ole undead man
 	contagion_cost = 0 #usually 0

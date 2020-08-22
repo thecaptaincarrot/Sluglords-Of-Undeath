@@ -3,7 +3,7 @@ extends "res://Undead/undead_blank.gd"
 
 func _ready():
 	identity = "Zombie"
-	description = "A sea bloated corpse found on Thrassian shores haphazardly animated. While not particularly useful, it is at least ubiquitous and cheap"
+	description = "A sea bloated corpse found on Thrassian shores and haphazardly animated. While not particularly useful, it is at least ubiquitous and cheap"
 
 	icon = "res://Undead/images/Zombie.png"
 	#The number in the horde, which will reduce as it takes damage

@@ -88,3 +88,12 @@ func build_payment(building):
 	gold = gold - building.gold_cost
 	corpses = corpses - building.corpse_cost
 	contagion = contagion - building.contagion_cost
+
+
+func recruit_payment(undead):
+	#should we double check right now to make sure the resources are available?
+	#Maybe
+	gold = gold - undead.gold_cost
+	corpses = corpses - undead.corpses_cost
+	contagion = contagion - undead.contagion_cost
+	print("Paid for recruitmnet")

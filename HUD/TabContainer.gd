@@ -25,4 +25,3 @@ func _on_TabContainer_mouse_entered():
 
 func _on_TabContainer_mouse_exited():
 	moused_over = false
-	

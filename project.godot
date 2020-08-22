@@ -22,6 +22,11 @@ config/icon="res://icon.png"
 [autoload]
 
 Osseorium="*res://Buildings Resources/Scripts/Osseorium.gd"
+RotFarm="*res://Buildings Resources/Scripts/RotFarm.gd"
+Docks="*res://Buildings Resources/Scripts/Docks.gd"
+Zombie="*res://Undead/Zombie.gd"
+GlobalSkeleton="*res://Undead/Skeleton.gd"
+SuperSkeleton="*res://Undead/SuperSkeleton.gd"
 
 [display]
 

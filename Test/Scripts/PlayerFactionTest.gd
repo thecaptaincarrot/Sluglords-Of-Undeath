@@ -109,12 +109,10 @@ func _on_hex_clicked(hex):
 	#if the hex is owned, create context menu
 	if hex.faction_owner == player_faction and player_faction != null:
 		var new_window = OwnedHexMenu.instance()
-		var placement = Vector2(hex.get_global_transform_with_canvas().origin.x, hex.get_global_transform_with_canvas().origin.y)
-		print(placement)
-		new_window.get_node("TabContainer/Hex").initialize_menu(hex,player_faction)
+		new_window.initialize(hex,player_faction,hex.island)
 		$MapTestHUDCanvas.add_child(new_window)
-		new_window.rect_position = placement
-		new_window.rect_position.y -= new_window.rect_size.y + 25
-		new_window.get_child(0).connect("deselect",hex,"deselect")
+		new_window.rect_position = Vector2(0,500)
+		for N in hex.island.hexes:
+			new_window.get_child(0).connect("deselect",N,"deselect")
 		hex.select()
 		

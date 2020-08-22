@@ -5,6 +5,8 @@ export (PackedScene) var ToolTip
 var identity = "Hex"
 var color setget change_color
 
+var border_thickness = 2
+
 var selected = false setget change_selection
 
 #A hex can either be empty (as in a sea tile) or be a land tile
@@ -71,7 +73,7 @@ func define_hex_point(center : Vector2, hex_size, i):
 	var angle_deg = 60 * i - 30
 	var angle_rad =  PI / 180 * angle_deg
 	return Vector2(center.x + hex_size * cos(angle_rad),
-					center.y + hex_size  * sin(angle_rad))
+					center.y + hex_size  * sin(angle_rad) * .5)
 
 
 func draw_hexagon(center : Vector2, hex_size):
@@ -94,10 +96,10 @@ func draw_hexagon(center : Vector2, hex_size):
 	
 	for i in range (6):
 		#create new line with all points
-		from_point = define_hex_point(center,hex_size + 4,i)
+		from_point = define_hex_point(center,hex_size + border_thickness,i)
 		new_array.append(from_point)
 		
-	new_array.append(define_hex_point(center,hex_size + 4,0)) #Connect the Point
+	new_array.append(define_hex_point(center,hex_size + border_thickness,0)) #Connect the Point
 	
 	$BorderHex.polygon = new_array
 	$BorderHex.color = Color(1.0,0,0,0)

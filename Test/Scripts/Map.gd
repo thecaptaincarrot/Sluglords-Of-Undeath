@@ -331,7 +331,7 @@ func clear_map():
 
 func axial_to_pixel(q,r):
 	var x  = size * (sqrt(3) * q + (sqrt(3) / 2) * r)
-	var y = size * ((3.0 / 2) * r)
+	var y = size * ((3.0 / 2) * r)  * .5
 	return Vector2(x,y)
 
 

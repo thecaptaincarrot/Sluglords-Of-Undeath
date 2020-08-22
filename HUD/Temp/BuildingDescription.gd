@@ -15,11 +15,6 @@ func _ready():
 	build_out_info()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func button_disable():
 	if not enabled:
 		
@@ -57,10 +52,14 @@ func check_enabled(faction, hex):
 
 
 func init_to_target():
-	print("Init_Successful")
 	match target:
 		"Osseorium":
 			target_building = Osseorium
+		"Docks":
+			target_building = Docks
+		"Rot Farm":
+			target_building = RotFarm
+		
 
 
 func build_out_info():
@@ -86,5 +85,6 @@ func build_out_info():
 
 func _on_BuildButton_pressed():
 	emit_signal("build",target_building)
+	print("Building")
 	#Subtract Resources from player faction.
 	

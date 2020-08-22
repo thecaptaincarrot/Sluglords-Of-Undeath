@@ -1,4 +1,4 @@
-extends Control
+extends HBoxContainer
 
 
 # Declare member variables here. Examples:
@@ -15,7 +15,10 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
-func initialize(hex, faction, island):
-	$TabContainer/Hex.initialize_menu(hex, faction)
-	$TabContainer/Island.initialize_menu(island, faction)
+func create(count, identity, turns):
+	$Count.text = str(count) + "."
+	$UndeadType.text = str(identity) + ":  "
+	$TurnsLeft.text = str(turns)
+	if turns == 1:
+		$Turn.text = "Turn:"
+	print (str(count) + " " + str(identity) + " " + str(turns))

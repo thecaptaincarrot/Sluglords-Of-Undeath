@@ -9,7 +9,7 @@ func _ready():
 	short_description = "+3 corpses \n+1 recruitment capacity"
 	description = verbose_description + "\n\n" + short_description
 	
-	enable_condition = "Sea Facing"
+	enable_condition = "Always Enabled"
 	
 	build_time = 3
 	
