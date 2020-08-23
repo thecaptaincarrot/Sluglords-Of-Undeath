@@ -37,5 +37,6 @@ func _on_TabContainer_tab_changed(tab):
 		for hex in target_island.hexes:
 			hex.select()
 
+
 func recruit_downwell(junk):
 	$TabContainer/Island.update_queue()

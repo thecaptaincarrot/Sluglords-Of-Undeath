@@ -35,6 +35,7 @@ func initialize_menu(island, faction):
 	island.update_recruitment_capacity()
 	$MarginContainer/HBoxContainer/FunctionButton/RecruitmentCapacity.text = "Recruitment Capacity: " + str(island.recruitment_capacity)
 	update_queue()
+	update_forces()
 
 
 func re_initialize():
@@ -52,6 +53,7 @@ func re_initialize():
 	target_island.update_recruitment_capacity()
 	$MarginContainer/HBoxContainer/FunctionButton/RecruitmentCapacity.text = "Recruitment Capacity: " + str(target_island.recruitment_capacity)
 	update_queue()
+	update_forces()
 
 
 func _on_RecruitButton_pressed():
@@ -79,3 +81,22 @@ func update_queue():
 		new_line.create(i, queue_element["type"].identity, queue_element["turns"])
 		$MarginContainer/HBoxContainer/FunctionButton/ScrollContainer/QueueBox.add_child(new_line)
 	print ("Queue Updated")
+
+
+func update_forces():
+	var skeletoncount = 0
+	var zombiecount = 0
+	var supercount = 0
+	
+	for undead in target_island.undead_array:
+		match undead["type"]:
+			Zombie:
+				zombiecount += 1
+			GlobalSkeleton:
+				skeletoncount += 1
+			SuperSkeleton:
+				supercount += 1
+	
+	$MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer/HBoxContainer/ZombiesNum.text = str(zombiecount)
+	$MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer/HBoxContainer2/SkeletonsNum.text = str(skeletoncount)
+	$MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer/HBoxContainer3/SupersNum.text = str(supercount)

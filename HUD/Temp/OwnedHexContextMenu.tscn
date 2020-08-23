@@ -306,39 +306,55 @@ mouse_filter = 1
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Island/MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer"]
-margin_right = 72.0
+margin_right = 78.0
 margin_bottom = 50.0
 
-[node name="Zombies" type="Label" parent="TabContainer/Island/MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer"]
-margin_right = 72.0
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Island/MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer"]
+margin_right = 78.0
 margin_bottom = 14.0
-text = "Zombies: 0"
 
-[node name="Skeletons" type="Label" parent="TabContainer/Island/MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer"]
+[node name="Zombies" type="Label" parent="TabContainer/Island/MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_right = 64.0
+margin_bottom = 14.0
+text = "Zombies: "
+
+[node name="ZombiesNum" type="Label" parent="TabContainer/Island/MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_left = 68.0
+margin_right = 76.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Island/MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer"]
 margin_top = 18.0
-margin_right = 72.0
+margin_right = 78.0
 margin_bottom = 32.0
-text = "Zombies: 0"
 
-[node name="SuperSkeletons" type="Label" parent="TabContainer/Island/MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer"]
+[node name="Skeletons" type="Label" parent="TabContainer/Island/MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 66.0
+margin_bottom = 14.0
+text = "Skeletons:"
+
+[node name="SkeletonsNum" type="Label" parent="TabContainer/Island/MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 70.0
+margin_right = 78.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Island/MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer"]
 margin_top = 36.0
-margin_right = 72.0
+margin_right = 78.0
 margin_bottom = 50.0
-text = "Zombies: 0"
 
-[node name="Label4" type="Label" parent="TabContainer/Island/MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer"]
-visible = false
-margin_top = 54.0
-margin_right = 72.0
-margin_bottom = 68.0
-text = "Zombies: 0"
+[node name="Supers" type="Label" parent="TabContainer/Island/MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer/HBoxContainer3"]
+margin_right = 47.0
+margin_bottom = 14.0
+text = "Supers:"
 
-[node name="Label5" type="Label" parent="TabContainer/Island/MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer"]
-visible = false
-margin_top = 54.0
-margin_right = 72.0
-margin_bottom = 68.0
-text = "Zombies: 0"
+[node name="SupersNum" type="Label" parent="TabContainer/Island/MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 51.0
+margin_right = 59.0
+margin_bottom = 14.0
+text = "0"
 
 [node name="VSeparator2" type="VSeparator" parent="TabContainer/Island/MarginContainer/HBoxContainer"]
 margin_left = 206.0
@@ -362,6 +378,7 @@ margin_right = 152.0
 margin_bottom = 18.0
 
 [node name="ForcesButton" type="Button" parent="TabContainer/Island/MarginContainer/HBoxContainer/FunctionButton"]
+visible = false
 margin_top = 22.0
 margin_right = 152.0
 margin_bottom = 42.0
@@ -369,29 +386,29 @@ mouse_filter = 1
 text = "Undead Forces"
 
 [node name="RecruitButton" type="Button" parent="TabContainer/Island/MarginContainer/HBoxContainer/FunctionButton"]
-margin_top = 46.0
+margin_top = 22.0
 margin_right = 152.0
-margin_bottom = 66.0
+margin_bottom = 42.0
 mouse_filter = 1
 text = "Recruit Undead"
 
 [node name="AttackButton" type="Button" parent="TabContainer/Island/MarginContainer/HBoxContainer/FunctionButton"]
-margin_top = 70.0
+margin_top = 46.0
 margin_right = 152.0
-margin_bottom = 90.0
+margin_bottom = 66.0
 mouse_filter = 1
 text = "Launch Attack"
 
 [node name="Label" type="Label" parent="TabContainer/Island/MarginContainer/HBoxContainer/FunctionButton"]
-margin_top = 94.0
+margin_top = 70.0
 margin_right = 152.0
-margin_bottom = 108.0
+margin_bottom = 84.0
 text = "Queue"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Island/MarginContainer/HBoxContainer/FunctionButton"]
-margin_top = 112.0
+margin_top = 88.0
 margin_right = 152.0
-margin_bottom = 162.0
+margin_bottom = 138.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="QueueBox" type="VBoxContainer" parent="TabContainer/Island/MarginContainer/HBoxContainer/FunctionButton/ScrollContainer"]
