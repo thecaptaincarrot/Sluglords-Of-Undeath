@@ -70,7 +70,7 @@ func _input(event):
 
 func define_hex_point(center : Vector2, hex_size, i):
 	#returns a point 0 - 5 around Center that is Size units way from Center
-	var angle_deg = 60 * i - 30
+	var angle_deg = 60 * i
 	var angle_rad =  PI / 180 * angle_deg
 	return Vector2(center.x + hex_size * cos(angle_rad),
 					center.y + hex_size  * sin(angle_rad) * .5)
@@ -203,8 +203,6 @@ func change_type(new_value):
 		PILLAR:
 			$DrawHex.color = Color(0,1,1,1)
 	type = new_value
-
-
 
 
 func insta_build(new_building): #Building is a camel case string name of building
