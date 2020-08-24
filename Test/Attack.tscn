@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Test/Attack.gd" type="Script" id=1]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 74.5439, 172.415, 0, 0, 0, 0, 201.437, 261.583, 0, 0, 0, 0, 327.473, 159.554, 0, 0, 0, 0, 439.791, 75.5302, 0, 0, 0, 0, 590.691, 229.86, 0, 0, 0, 0, 1196.86, 238.434 )
+}
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Attack" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Rank1" type="Node" parent="."]
+
+[node name="Sload" type="Node" parent="Rank1"]
+
+[node name="Undead" type="Node" parent="Rank1"]
+
+[node name="Rank2" type="Node" parent="."]
+
+[node name="Sload" type="Node" parent="Rank2"]
+
+[node name="Undead" type="Node" parent="Rank2"]
+
+[node name="Rank3" type="Node" parent="."]
+
+[node name="Sload" type="Node" parent="Rank3"]
+
+[node name="Undead" type="Node" parent="Rank3"]
+
+[node name="Horde" type="Node" parent="."]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 74.5439, 172.415 )
+rotation = 0.612541
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D"]
+frames = SubResource( 2 )

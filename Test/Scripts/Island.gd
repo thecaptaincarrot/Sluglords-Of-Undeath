@@ -168,4 +168,16 @@ func add_to_queue(undead):
 
 func add_undead(undead):
 	#this needs its own function so I can call it from outside
-	undead_array.append({"type" : undead, "health" : undead.base_quantity})
+	var new_undead = Node.new()
+	print(undead)
+	new_undead.set_script(load(undead.path))
+	$Undead.add_child(new_undead)
+
+
+func get_undead():
+	var undead_array = []
+	for undead in $Undead.get_children():
+		undead_array.append(undead)
+	
+	print(undead_array)
+	return undead_array

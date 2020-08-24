@@ -25,5 +25,7 @@ func _ready():
 	requires_osseorium = false #if other considerations needed, add additional below.
 	
 	special_abilities = null #Placeholder
+	
+	path = "res://Undead/Skeleton.gd"
 
 #No process needed

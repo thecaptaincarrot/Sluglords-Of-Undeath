@@ -4,3 +4,5 @@
 
 [node name="SloadFactionNode" type="Node"]
 script = ExtResource( 1 )
+
+[node name="Laboratory" type="Node" parent="."]

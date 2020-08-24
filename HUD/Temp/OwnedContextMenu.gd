@@ -4,6 +4,10 @@ var target_hex
 var target_island
 var player_faction
 
+signal state_change
+
+onready var main_node = get_parent().get_parent() #this should be handled by signals tbh
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -40,3 +44,7 @@ func _on_TabContainer_tab_changed(tab):
 
 func recruit_downwell(junk):
 	$TabContainer/Island.update_queue()
+
+
+func _on_AttackButton_pressed():
+	emit_signal("state_change","Attacking")

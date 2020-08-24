@@ -13,6 +13,10 @@ var islands
 var factions = []
 var turn = 1
 
+#enums for game states
+enum {DEFAULT, ATTACKING}
+var state = DEFAULT
+
 signal Tick
 
 # Called when the node enters the scene tree for the first time.
@@ -81,6 +85,19 @@ func generate_new_player_faction():
 	chosen_hex.insta_build(Osseorium)
 
 
+func change_state(new_state):
+	match new_state:
+		"Default":
+			$MapTestHUDCanvas/GeneralHUD.show()
+			$MapTestHUDCanvas/NextTurn.show()
+			
+			state = DEFAULT
+		"Attacking":
+			$MapTestHUDCanvas/GeneralHUD.hide()
+			$MapTestHUDCanvas/NextTurn.hide()
+			state = ATTACKING
+
+
 func _on_NextTurn_pressed():
 	#This is an example of the top level of a game scene...
 	#Rather than using signal ticks, it's better to do direct function calls.
@@ -102,7 +119,7 @@ func _on_NextTurn_pressed():
 		if N.has_method("end_of_turn"):
 			N.end_of_turn()
 			
-
+ 
 
 func _on_hex_clicked(hex):
 	#check whether the hex is owned or not
@@ -110,6 +127,7 @@ func _on_hex_clicked(hex):
 	if hex.faction_owner == player_faction and player_faction != null:
 		var new_window = OwnedHexMenu.instance()
 		new_window.initialize(hex,player_faction,hex.island)
+		new_window.connect("state_change",self,"change_state")
 		$MapTestHUDCanvas.add_child(new_window)
 		new_window.rect_position = Vector2(0,500)
 		for N in hex.island.hexes:

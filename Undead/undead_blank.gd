@@ -27,6 +27,8 @@ var requires_osseorium = false #if other considerations needed, add additional b
 
 var special_abilities = null #Placeholder
 
+var path = "res://Undead/undead_blank.gd"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

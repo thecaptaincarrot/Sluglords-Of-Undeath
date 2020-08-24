@@ -20,6 +20,8 @@ OwnedHexMenu = ExtResource( 6 )
 
 [node name="Factions" type="Node2D" parent="."]
 
+[node name="Attacks" type="Node2D" parent="."]
+
 [node name="BackgroundLayer" parent="." instance=ExtResource( 3 )]
 
 [node name="TestCamera" parent="." instance=ExtResource( 1 )]

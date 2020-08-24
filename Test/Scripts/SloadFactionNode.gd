@@ -29,15 +29,15 @@ func _ready():
 
 
 func initialize_new_faction():
-	gold = 500
-	corpses = 0
-	contagion = 0
+	gold = 5000
+	corpses = 5000
+	contagion = 5000
 
 
 func clear_faction():
-	gold = 500
-	corpses = 0
-	contagion = 0
+	gold = 5000
+	corpses = 5000
+	contagion = 5000
 	
 	for island in territory_islands:
 		island.clear_owner()
@@ -75,11 +75,11 @@ func collect_production():
 
 func end_of_turn():
 	#check timed events
-	#generate an event maybe
+	#generate an event maybe -- do NPCs get events?
 	#move armies and resolve battles
 	update_production()
 	collect_production()
-	#construct buildings
+	#construct buildings - done on island level
 
 
 func build_payment(building):
@@ -96,4 +96,3 @@ func recruit_payment(undead):
 	gold = gold - undead.gold_cost
 	corpses = corpses - undead.corpses_cost
 	contagion = contagion - undead.contagion_cost
-	print("Paid for recruitmnet")

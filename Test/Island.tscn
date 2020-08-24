@@ -14,3 +14,5 @@ text = "hhhhhhh
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Undead" type="Node" parent="."]

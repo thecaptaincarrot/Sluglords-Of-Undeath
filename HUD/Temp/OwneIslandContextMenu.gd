@@ -88,13 +88,13 @@ func update_forces():
 	var zombiecount = 0
 	var supercount = 0
 	
-	for undead in target_island.undead_array:
-		match undead["type"]:
-			Zombie:
+	for undead in target_island.get_undead():
+		match undead.identity:
+			Zombie.identity:
 				zombiecount += 1
-			GlobalSkeleton:
+			GlobalSkeleton.identity:
 				skeletoncount += 1
-			SuperSkeleton:
+			SuperSkeleton.identity:
 				supercount += 1
 	
 	$MarginContainer/HBoxContainer/UndeadInfo/ScrollContainer/VBoxContainer/HBoxContainer/ZombiesNum.text = str(zombiecount)
