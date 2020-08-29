@@ -5,16 +5,13 @@
 [ext_resource path="res://Test/Scripts/NewMapPanel.gd" type="Script" id=3]
 [ext_resource path="res://Test/Scripts/ResourcesPanel.gd" type="Script" id=4]
 
-
-
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.219608, 0.219608, 0.219608, 0.933333 )
 
 [node name="MapTestHUDCanvas" type="CanvasLayer"]
 
 [node name="GeneralHUD" parent="." instance=ExtResource( 1 )]
-margin_left = 0.735107
-margin_right = 0.735107
+margin_left = -4.17233e-07
 mouse_filter = 2
 
 [node name="RemapHUDButton" type="Button" parent="."]
@@ -28,7 +25,6 @@ __meta__ = {
 }
 
 [node name="NewMapPanel" type="Panel" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -70,7 +66,7 @@ margin_left = 154.412
 margin_top = -8.82352
 margin_right = 228.412
 margin_bottom = 15.1765
-value = 32.0
+value = 64.0
 rounded = true
 suffix = " px"
 __meta__ = {
@@ -89,6 +85,7 @@ margin_left = 154.412
 margin_top = -8.82352
 margin_right = 228.412
 margin_bottom = 15.1765
+min_value = 4.0
 value = 4.0
 rounded = true
 suffix = "Hex"
@@ -102,9 +99,10 @@ text = "Max Island Size"
 
 [node name="MaxIslandSelect" type="SpinBox" parent="NewMapPanel/MaxIslandSize"]
 margin_left = 154.412
-margin_top = -8.82352
+margin_top = -10.2937
 margin_right = 228.412
-margin_bottom = 15.1765
+margin_bottom = 13.7063
+min_value = 4.0
 value = 8.0
 rounded = true
 suffix = "Hex"
@@ -127,7 +125,7 @@ margin_left = 154.412
 margin_top = -8.82352
 margin_right = 228.412
 margin_bottom = 15.1765
-value = 7.0
+value = 10.0
 rounded = true
 suffix = "Hex"
 __meta__ = {
@@ -229,10 +227,10 @@ margin_bottom = 14.0
 text = "Turn: 1"
 
 [node name="NextTurn" type="Button" parent="."]
-margin_left = 6.0
-margin_top = 564.0
-margin_right = 121.0
-margin_bottom = 594.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -30.0
+margin_right = 115.0
 text = "Next Turn"
 __meta__ = {
 "_edit_use_anchors_": false

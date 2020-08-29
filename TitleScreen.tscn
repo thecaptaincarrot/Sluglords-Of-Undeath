@@ -21,4 +21,7 @@ margin_top = -26.0
 margin_right = 78.0
 margin_bottom = 19.0
 text = "Go To Test Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="TestMenu" to="." method="_on_TestMenu_pressed"]

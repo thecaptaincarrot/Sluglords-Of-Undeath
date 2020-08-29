@@ -71,15 +71,6 @@ func _on_hex_clicked(hex):
 
 func calculate_paths():
 	#Without pathing
-#	if start != null:
-#		frontier.push_back(start)
-#		while not frontier.empty():
-#			var current = frontier.pop_front()
-#			for next in current.get_neighbors():
-#				if not reached.has(next):
-#					frontier.push_back(next)
-#					reached.append(next)
-#		print ("Recalculated Path")
 	#With PAthing
 	if start != null:
 		frontier.push_back(start)

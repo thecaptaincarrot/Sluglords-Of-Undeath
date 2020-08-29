@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Hexes/Basic_Hex.png" type="Texture" id=1]
+[ext_resource path="res://MainNodes/Hex.gd" type="Script" id=2]
+[ext_resource path="res://Hexes/sea_mask.png" type="Texture" id=3]
+[ext_resource path="res://Hexes/sea_tile.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Hex" type="Node2D"]
+z_as_relative = false
+script = ExtResource( 2 )
+
+[node name="HeightSensitive" type="Node2D" parent="."]
+
+[node name="Graphics" type="Node2D" parent="HeightSensitive"]
+position = Vector2( 0, 25.5 )
+
+[node name="Hex" type="AnimatedSprite" parent="HeightSensitive/Graphics"]
+light_mask = 32
+frames = SubResource( 1 )
+frame = 1
+
+[node name="Hex2" type="AnimatedSprite" parent="HeightSensitive/Graphics"]
+frames = SubResource( 1 )
+
+[node name="Building" type="Sprite" parent="HeightSensitive/Graphics"]
+
+[node name="HexArea" type="Area2D" parent="HeightSensitive"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionHex" type="CollisionPolygon2D" parent="HeightSensitive/HexArea"]
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0.663361, 25.2104 )
+texture = ExtResource( 3 )
+energy = 0.0
+mode = 3
+range_item_cull_mask = 32
+[connection signal="mouse_entered" from="HeightSensitive/HexArea" to="." method="_on_HexArea_mouse_entered"]
+[connection signal="mouse_exited" from="HeightSensitive/HexArea" to="." method="_on_HexArea_mouse_exited"]

@@ -3,8 +3,7 @@
 [ext_resource path="res://Test/Scripts/Camera22D.gd" type="Script" id=1]
 [ext_resource path="res://BackgroundLayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Test/Scripts/HexInteractionTest.gd" type="Script" id=3]
-[ext_resource path="res://Test/Hex.tscn" type="PackedScene" id=4]
-
+[ext_resource path="res://Test/TestHex.tscn" type="PackedScene" id=4]
 
 
 [node name="HexInteractionTest" type="Node2D"]
@@ -31,9 +30,6 @@ __meta__ = {
 
 [node name="BackgroundLayer" parent="." instance=ExtResource( 2 )]
 layer = -2
-
-[node name="ColorRect" parent="BackgroundLayer" index="0"]
-mouse_filter = 2
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_Button_pressed"]
 
 [editable path="BackgroundLayer"]
