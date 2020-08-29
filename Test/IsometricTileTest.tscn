@@ -59,14 +59,11 @@ frame_15/delay_sec = 0.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color( 0.27451, 0.294118, 0.407843, 1 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
 margin_left = -2000.0
 margin_top = -2000.0
 margin_right = 2000.0
-margin_bottom = 2000.0
+margin_bottom = 4000.0
+rect_scale = Vector2( 1, 0.667 )
 mouse_filter = 2
 size_flags_stretch_ratio = 0.0
 texture = SubResource( 1 )
