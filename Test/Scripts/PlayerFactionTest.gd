@@ -130,7 +130,7 @@ func _on_hex_clicked(hex):
 			var hex_menu = $MapTestHUDCanvas/OwnedContextMenu
 			hex_menu.initialize(hex,player_faction,hex.island)
 			for N in hex.island.hexes:
-				hex_menu.get_child(0).connect("deselect",N,"deselect")
+				hex_menu.get_child(0).connect("deselect",N,"deselect",[],CONNECT_ONESHOT)
 			hex.select()
 			hex_menu.show()
 

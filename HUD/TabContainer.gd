@@ -22,9 +22,6 @@ func _input(event):
 		for menu in get_parent().get_children(): #God I'm glad I'm deleting all my menus after this
 			if menu.name != "TabContainer" and menu.name != "AttackMenu":
 				menu.queue_free()
-		if get_parent().target_island != null:
-			for hex in get_parent().target_island.hexes:
-				disconnect("deselect",hex,"deselect")
 		get_parent().get_node("AttackMenu").hide()
 		get_parent().hide()
 
