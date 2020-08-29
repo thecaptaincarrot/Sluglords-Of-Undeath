@@ -4,7 +4,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 74.5439, 172.415, 0, 0, 0, 0, 201.437, 261.583, 0, 0, 0, 0, 327.473, 159.554, 0, 0, 0, 0, 439.791, 75.5302, 0, 0, 0, 0, 590.691, 229.86, 0, 0, 0, 0, 1196.86, 238.434 )
+"points": PoolVector2Array(  )
 }
 
 [sub_resource type="SpriteFrames" id=2]
@@ -38,12 +38,14 @@ script = ExtResource( 1 )
 
 [node name="Horde" type="Node" parent="."]
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Undead" type="Node" parent="Horde"]
+
+[node name="AttackPath" type="Path2D" parent="."]
 curve = SubResource( 1 )
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFoillow" type="PathFollow2D" parent="AttackPath"]
 position = Vector2( 74.5439, 172.415 )
 rotation = 0.612541
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D"]
+[node name="FerrymanSprite" type="AnimatedSprite" parent="AttackPath/PathFoillow"]
 frames = SubResource( 2 )

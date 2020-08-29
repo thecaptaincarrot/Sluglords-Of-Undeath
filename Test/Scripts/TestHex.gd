@@ -12,11 +12,6 @@ var selected = false setget change_selection
 #A hex can either be empty (as in a sea tile) or be a land tile
 #basic Types
 enum {EMPTY, SEA, LAND, PILLAR}
-#special types
-enum {NOTHING, }
-#Building Types
-enum {LABORATORY, DOCKS, AIRDOCKS, SLAVEPIT, ROTFARM, DISEASEMARKET, PLAGUECIRCUS,
-		}
 
 var gold_production = 2
 var corpse_production = 2
@@ -42,7 +37,6 @@ var building_turns_left = 0
 var feature = null
 
 var faction_owner = null
-var special_type = NOTHING
 var troops_here = false
 
 #***Utility variables and signals***

@@ -4,7 +4,8 @@ var target_hex
 var target_island
 var player_faction
 
-signal state_change
+signal launch_attack
+signal cancel_attack
 
 onready var main_node = get_parent().get_parent() #this should be handled by signals tbh
 
@@ -34,6 +35,9 @@ func re_initialize():
 func _on_TabContainer_tab_changed(tab):
 	for hex in target_island.hexes:
 		hex.deselect()
+	for menu in get_children():
+		if menu.name != "TabContainer" and menu.name != "AttackMenu":
+			menu.queue_free()
 	
 	if tab == 0:
 		target_hex.select()
@@ -47,4 +51,12 @@ func recruit_downwell(junk):
 
 
 func _on_AttackButton_pressed():
-	emit_signal("state_change","Attacking")
+	#emit_signal("state_change","Attacking")
+	emit_signal("launch_attack",target_island)
+	$AttackMenu.show()
+
+
+func _on_CancelAttackButton_pressed():
+	$TabContainer.state = $TabContainer.DEFAULT
+	$AttackMenu.cancel_attack()
+	emit_signal("cancel_attack")

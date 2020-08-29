@@ -5,7 +5,6 @@ onready var map = $Map
 export (PackedScene) var Faction
 
 #HUD
-export (PackedScene) var OwnedHexMenu
 
 var player_faction = null
 
@@ -17,6 +16,7 @@ var turn = 1
 enum {DEFAULT, ATTACKING}
 var state = DEFAULT
 
+signal new_hex_clicked
 signal Tick
 
 # Called when the node enters the scene tree for the first time.
@@ -124,13 +124,29 @@ func _on_NextTurn_pressed():
 func _on_hex_clicked(hex):
 	#check whether the hex is owned or not
 	#if the hex is owned, create context menu
-	if hex.faction_owner == player_faction and player_faction != null:
-		var new_window = OwnedHexMenu.instance()
-		new_window.initialize(hex,player_faction,hex.island)
-		new_window.connect("state_change",self,"change_state")
-		$MapTestHUDCanvas.add_child(new_window)
-		new_window.rect_position = Vector2(0,500)
-		for N in hex.island.hexes:
-			new_window.get_child(0).connect("deselect",N,"deselect")
-		hex.select()
-		
+	print(state)
+	if state == DEFAULT:
+		if hex.faction_owner == player_faction and player_faction != null:
+			var hex_menu = $MapTestHUDCanvas/OwnedContextMenu
+			hex_menu.initialize(hex,player_faction,hex.island)
+			for N in hex.island.hexes:
+				hex_menu.get_child(0).connect("deselect",N,"deselect")
+			hex.select()
+			hex_menu.show()
+
+
+func launching_attack(island):
+	#signal sent from hex menu
+	#When this is 
+	change_state("Attacking")
+	var new_attack = player_faction.create_new_attack()
+	new_attack.start_island = island
+	connect("new_hex_clicked", new_attack, "new_hex_selected")
+	$MapTestHUDCanvas/OwnedContextMenu/AttackMenu.temp_attack = new_attack
+	#We need to tell the window which attack is the prospective one so 
+	#the window can free it if it is closed prematurely.
+	pass
+
+
+func _on_OwnedContextMenu_cancel_attack():
+	change_state("Default")

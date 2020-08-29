@@ -1,11 +1,14 @@
 extends TabContainer
 
+enum {DEFAULT, ATTACKING}
+var state
+
 var moused_over = false
 signal deselect
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	state = DEFAULT
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,9 +17,16 @@ func _ready():
 
 
 func _input(event):
-	if not moused_over and event.is_action_pressed("ui_left_click"):
+	if not moused_over and event.is_action_pressed("ui_left_click") and state == DEFAULT:
 		emit_signal("deselect")
-		get_parent().queue_free()
+		for menu in get_parent().get_children(): #God I'm glad I'm deleting all my menus after this
+			if menu.name != "TabContainer" and menu.name != "AttackMenu":
+				menu.queue_free()
+		if get_parent().target_island != null:
+			for hex in get_parent().target_island.hexes:
+				disconnect("deselect",hex,"deselect")
+		get_parent().get_node("AttackMenu").hide()
+		get_parent().hide()
 
 
 func _on_TabContainer_mouse_entered():
@@ -25,3 +35,9 @@ func _on_TabContainer_mouse_entered():
 
 func _on_TabContainer_mouse_exited():
 	moused_over = false
+
+
+func _on_AttackMenu_mouse_exited():
+	moused_over = false
+
+

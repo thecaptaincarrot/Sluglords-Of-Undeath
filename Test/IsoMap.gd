@@ -3,7 +3,7 @@ extends Node2D
 export (PackedScene) var Hex
 export (PackedScene) var Island
 
-export var size = 32
+export var size = 64
 
 export var map_size = 9
 export var min_island_size = 8
@@ -20,15 +20,65 @@ var center_hex
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#initialize hex_map with empty hexes
 	clear_map()
-	#All tiles are now sea tiles. Tiles that are not NULL are viable 
-
+	build_map_new()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+#func _process(delta):
+#	pass
+
+
+func clear_map():
+	hex_map.clear()
+	
+	for island in islands:
+		island.clear_owner()
+	islands.clear()
+	
+	for N in $Hex.get_children():
+		N.queue_free()
+
+	for N in $Island.get_children():
+		N.queue_free()
+
+	for q in range(map_size * -1, map_size + 1):
+		var new_dict = {}
+		for r in range(map_size * -1, map_size + 1):
+			var new_hex = Hex.instance()
+			new_hex.axial.x = q
+			new_hex.axial.y = r
+			new_hex.axial_to_cube()
+			new_hex.position = axial_to_pixel(q,r)
+			new_dict[r] = new_hex
+			
+			#Z-index
+			new_hex.cube_to_offset()
+			var prospective_z = new_hex.offset.y * 2
+			if int(new_hex.offset.x) & 1 == 1:
+				prospective_z -= 1
+			
+#			#height_hoise
+#			randomize()
+#			var height_offset = 10 + randi() % 30
+#			new_hex.height_offset(height_offset)
+#
+			new_hex.z_index = prospective_z + 100
+			
+			$Hex.add_child(new_hex)
+		hex_map[q] = new_dict
+		
+	#center point is 0,0 don't center camera dumbass
+	#All tiles within map_size tiles of the point 0,0 are sea tiles, all others
+	# 	are empty
+	center_hex = hex_map[0][0]
+	for q in range(map_size * -1, map_size + 1):
+		for r in range(map_size * -1, map_size + 1):
+			if hex_map[q][r].distance_to_hex(center_hex) > map_size:
+				hex_map[q][r].queue_free()
+				hex_map[q][r] = null
+			else:
+				hex_map[q][r].type = hex_map[q][r].SEA
 
 
 func build_map_new():
@@ -152,6 +202,11 @@ func build_map_new():
 						var r = int(neighbor.axial.y)
 						eligible_tiles[q][r] = null
 				hex_map[x][y].type = hex_map[x][y].LAND
+				
+				#random height
+				randomize()
+				var height = 10 + (randi() % 10) * 2
+				hex_map[x][y].height_offset(height)
 		#If no, all hexes in the island are removed from the possible hexes list, but neighbors are not.
 		else:
 			for hex in new_island_array:
@@ -162,48 +217,9 @@ func build_map_new():
 		#Commiting islands means to remove all adjacent tiles as being eligible
 
 
-func clear_map():
-	hex_map.clear()
-	
-	for island in islands:
-		island.clear_owner()
-	islands.clear()
-	
-	for N in $Hex.get_children():
-		N.queue_free()
-
-	for N in $Island.get_children():
-		N.queue_free()
-
-	for q in range(map_size * -1, map_size + 1):
-		var new_dict = {}
-		for r in range(map_size * -1, map_size + 1):
-			var new_hex = Hex.instance()
-			new_hex.axial.x = q
-			new_hex.axial.y = r
-			new_hex.axial_to_cube()
-			new_hex.size = size - 3 #pixel barrier
-			new_hex.position = axial_to_pixel(q,r)
-			new_dict[r] = new_hex
-			$Hex.add_child(new_hex)
-			new_hex.connect("clicked",get_parent(), "_on_hex_clicked")
-		hex_map[q] = new_dict
-		
-	#center point is 0,0 don't center camera dumbass
-	#All tiles within map_size tiles of the point 0,0 are sea tiles, all others
-	# 	are empty
-	center_hex = hex_map[0][0]
-	for q in range(map_size * -1, map_size + 1):
-		for r in range(map_size * -1, map_size + 1):
-			if hex_map[q][r].distance_to_hex(center_hex) > map_size:
-				hex_map[q][r].queue_free()
-				hex_map[q][r] = null
-			else:
-				hex_map[q][r].type = hex_map[q][r].SEA
-
 func axial_to_pixel(q,r):
 	var x  = size * (3.0/2 * q)
-	var y = size * (sqrt(3)/2 * q + sqrt(3) * r) * .5
+	var y = size * (sqrt(3)/2 * q + sqrt(3) * r) * .6666666666666
 	return Vector2(x,y)
 
 
@@ -221,8 +237,3 @@ func get_neighbors(hex):
 			if new_y in hex_map[new_x] and hex_map[new_x][new_y] != null:
 				hex_neighbors.append(hex_map[new_x][new_y])
 	return hex_neighbors
-
-func get_islands():
-	return $Island.get_children()
-
-

@@ -3,7 +3,8 @@
 [ext_resource path="res://Test/Scripts/Camera22D.gd" type="Script" id=1]
 [ext_resource path="res://BackgroundLayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Test/Scripts/HexInteractionTest.gd" type="Script" id=3]
-[ext_resource path="res://Test/Hex.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Test/TestHex.tscn" type="PackedScene" id=4]
+
 
 [node name="HexInteractionTest" type="Node2D"]
 script = ExtResource( 3 )

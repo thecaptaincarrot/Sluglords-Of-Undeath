@@ -1,0 +1,87 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Test/IsoMap.gd" type="Script" id=1]
+[ext_resource path="res://MainNodes/Hex.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Test/TestCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hexes/SeaTexture/Sea12.png" type="Texture" id=4]
+[ext_resource path="res://Hexes/SeaTexture/Sea13.png" type="Texture" id=5]
+[ext_resource path="res://Hexes/SeaTexture/Sea11.png" type="Texture" id=6]
+[ext_resource path="res://Hexes/SeaTexture/Sea10.png" type="Texture" id=7]
+[ext_resource path="res://Hexes/SeaTexture/Sea9.png" type="Texture" id=8]
+[ext_resource path="res://Hexes/SeaTexture/Sea7.png" type="Texture" id=9]
+[ext_resource path="res://Hexes/SeaTexture/Sea8.png" type="Texture" id=10]
+[ext_resource path="res://Hexes/SeaTexture/Sea2.png" type="Texture" id=11]
+[ext_resource path="res://Hexes/SeaTexture/Sea4.png" type="Texture" id=12]
+[ext_resource path="res://Hexes/SeaTexture/Sea15.png" type="Texture" id=13]
+[ext_resource path="res://Hexes/SeaTexture/Sea0.png" type="Texture" id=14]
+[ext_resource path="res://Hexes/SeaTexture/Sea1.png" type="Texture" id=15]
+[ext_resource path="res://Hexes/SeaTexture/Sea3.png" type="Texture" id=16]
+[ext_resource path="res://Hexes/SeaTexture/Sea14.png" type="Texture" id=17]
+[ext_resource path="res://Hexes/SeaTexture/Sea5.png" type="Texture" id=18]
+[ext_resource path="res://Test/Island.tscn" type="PackedScene" id=19]
+
+[sub_resource type="AnimatedTexture" id=1]
+frames = 16
+fps = 8.0
+frame_0/texture = ExtResource( 14 )
+frame_1/texture = ExtResource( 15 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 11 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 16 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 12 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 18 )
+frame_5/delay_sec = 0.0
+frame_6/texture = ExtResource( 9 )
+frame_6/delay_sec = 0.0
+frame_7/texture = ExtResource( 9 )
+frame_7/delay_sec = 0.0
+frame_8/texture = ExtResource( 10 )
+frame_8/delay_sec = 0.0
+frame_9/texture = ExtResource( 8 )
+frame_9/delay_sec = 0.0
+frame_10/texture = ExtResource( 7 )
+frame_10/delay_sec = 0.0
+frame_11/texture = ExtResource( 6 )
+frame_11/delay_sec = 0.0
+frame_12/texture = ExtResource( 4 )
+frame_12/delay_sec = 0.0
+frame_13/texture = ExtResource( 5 )
+frame_13/delay_sec = 0.0
+frame_14/texture = ExtResource( 17 )
+frame_14/delay_sec = 0.0
+frame_15/texture = ExtResource( 13 )
+frame_15/delay_sec = 0.0
+
+[node name="IsometricTileTest" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.27451, 0.294118, 0.407843, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2000.0
+margin_top = -2000.0
+margin_right = 2000.0
+margin_bottom = 2000.0
+mouse_filter = 2
+size_flags_stretch_ratio = 0.0
+texture = SubResource( 1 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Map" type="Node2D" parent="."]
+script = ExtResource( 1 )
+Hex = ExtResource( 2 )
+Island = ExtResource( 19 )
+
+[node name="Hex" type="Node2D" parent="Map"]
+
+[node name="Island" type="Node2D" parent="Map"]
+
+[node name="TestCamera" parent="." instance=ExtResource( 3 )]

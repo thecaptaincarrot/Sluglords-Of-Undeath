@@ -1,5 +1,7 @@
 extends Node
 
+export (PackedScene) var Attack
+
 var gold_production = 0
 var corpse_production = 0
 var contagion_production = 0
@@ -96,3 +98,13 @@ func recruit_payment(undead):
 	gold = gold - undead.gold_cost
 	corpses = corpses - undead.corpses_cost
 	contagion = contagion - undead.contagion_cost
+
+#this returns the attack so it can be parented elsewhere
+func create_new_attack():
+	var new_attack = Attack.instance()
+	new_attack.faction = self
+	if is_player:
+		new_attack.is_player = true
+	
+	return new_attack
+	
