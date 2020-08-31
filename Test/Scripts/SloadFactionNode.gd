@@ -10,7 +10,7 @@ var gold
 var corpses
 var contagion
 
-var color = Color(1.0,0,1.0,1.0)
+var color = Color(1.0,0,1.0,0.25)
 
 var avatar = {"Eyes" : 0, "Mouth" : 0, "Hat" : 0, "Clothes" : 0}
 var sloadname = "N'gasta"
@@ -55,7 +55,7 @@ func take_ownership(island):
 	for hex in hexes:
 		hex.faction_owner = self
 		territory_hexes.append(hex)
-		hex.get_node("DrawHex").color = color
+		hex.ColorHex.color = color
 		
 		
 	print(sloadname + " took control of " + island.name + " island.")

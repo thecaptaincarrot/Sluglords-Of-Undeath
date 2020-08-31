@@ -16,9 +16,7 @@ func _ready():
 #	pass
 
 
-func _on_TestMenu_pressed():
-	get_tree().change_scene("res://Test/TestMenu.tscn")
-
-
-func _on_Button_pressed():
-	get_tree().change_scene("res://MainNodes/Game.tscn")
+func update_resources(gold,corpses,contagion):
+	$TextureRect/GoldText.text = str(gold)
+	$TextureRect/CorpsesText.text = str(corpses)
+	$TextureRect/ContagionText.text = str(contagion)

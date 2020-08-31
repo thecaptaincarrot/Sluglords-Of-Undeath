@@ -29,57 +29,22 @@ func _ready():
 func init_island():
 	island_name = _generate_name()
 	name = island_name
-	var best_position = Vector2(-9999,9999)
-	
-	var size = hexes[0].size
-	#find top right most hex, prioritizing topness, then rightness
-	for hex in hexes:
-		var q = hex.axial.x
-		var r = hex.axial.y
-		
-		
-		var pixel_center = axial_to_pixel(q,r,size)
-		if pixel_center.y < best_position.y:
-			best_position = pixel_center
-		elif pixel_center.y <= best_position.y and pixel_center.x > best_position.x:
-			best_position = pixel_center
-		
-	$IslandNameLabel.rect_global_position = Vector2(best_position.x, best_position.y - (size))
-	$IslandNameLabel.text = island_name
 
 
 func init_pillar():
 	island_name = "The Pillar of Thras"
 	name = island_name
-	var best_position = Vector2(-9999,9999)
-	
-	var size = hexes[0].size
-	#find top right most hex, prioritizing topness, then rightness
-	for hex in hexes:
-		var q = hex.axial.x
-		var r = hex.axial.y
-		
-		
-		var pixel_center = axial_to_pixel(q,r,size)
-		if pixel_center.y < best_position.y:
-			best_position = pixel_center
-		elif pixel_center.y <= best_position.y and pixel_center.x > best_position.x:
-			best_position = pixel_center
-		
-	$IslandNameLabel.rect_global_position = Vector2(best_position.x, best_position.y - (size * 3 / 2))
-	$IslandNameLabel.text = island_name
 
 
 func _generate_name():
 	randomize()
-	var card_pick = randi() % len(prefixes)
-	var prefix = prefixes[card_pick]
+	prefixes.shuffle()
+	midfixes.shuffle()
+	suffixes.shuffle()
 	
-	card_pick = randi() % len(midfixes)
-	var midfix = midfixes[card_pick]
-	
-	card_pick = randi() % len(suffixes)
-	var suffix = suffixes[card_pick]
+	var prefix = prefixes.front()
+	var midfix = midfixes.front()
+	var suffix = suffixes.front()
 	
 	return prefix + midfix + suffix
 

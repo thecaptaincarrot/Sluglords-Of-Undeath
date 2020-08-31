@@ -5,6 +5,8 @@ export (PackedScene) var ToolTip
 var identity = "Hex"
 var color setget change_color
 
+onready var ColorHex = $DrawHex
+
 var border_thickness = 2
 
 var selected = false setget change_selection

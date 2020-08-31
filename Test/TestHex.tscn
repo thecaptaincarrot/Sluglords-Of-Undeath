@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://HUD/ToolTip.tscn" type="PackedScene" id=1]
+[ext_resource path="res://HUD/Temp/ToolTip.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Test/Scripts/TestHex.gd" type="Script" id=2]
 
 [node name="Hex" type="Area2D"]

@@ -5,7 +5,7 @@ export (PackedScene) var Island
 
 export var size = 64
 
-export var map_size = 9
+export var map_size = 10
 export var min_island_size = 8
 export var max_island_size = 12
 export var distance_between_islands = 1
@@ -28,7 +28,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
+#Initialization
 func clear_map():
 	hex_map.clear()
 	
@@ -62,8 +62,9 @@ func clear_map():
 #			randomize()
 #			var height_offset = 10 + randi() % 30
 #			new_hex.height_offset(height_offset)
-#
 			new_hex.z_index = prospective_z + 100
+			
+			new_hex.Map = self
 			
 			$Hex.add_child(new_hex)
 		hex_map[q] = new_dict

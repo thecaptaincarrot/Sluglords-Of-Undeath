@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Hexes/Basic_Hex.png" type="Texture" id=1]
-[ext_resource path="res://MainNodes/Hex.gd" type="Script" id=2]
+[ext_resource path="res://Hexes/Scripts/Hex.gd" type="Script" id=2]
 [ext_resource path="res://Hexes/sea_tile.png" type="Texture" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -27,6 +27,8 @@ frames = SubResource( 1 )
 frame = 1
 
 [node name="Building" type="Sprite" parent="HeightSensitive/Graphics"]
+position = Vector2( 0, -45 )
+z_index = 1
 
 [node name="HexArea" type="Area2D" parent="HeightSensitive"]
 __meta__ = {
@@ -34,5 +36,6 @@ __meta__ = {
 }
 
 [node name="CollisionHex" type="CollisionPolygon2D" parent="HeightSensitive/HexArea"]
-[connection signal="mouse_entered" from="HeightSensitive/HexArea" to="." method="_on_HexArea_mouse_entered"]
-[connection signal="mouse_exited" from="HeightSensitive/HexArea" to="." method="_on_HexArea_mouse_exited"]
+
+[node name="Colorhex" type="Polygon2D" parent="HeightSensitive/HexArea"]
+color = Color( 1, 1, 1, 0 )

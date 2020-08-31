@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://ToolTip.gd" type="Script" id=1]
-[ext_resource path="res://HUD/ToolTipPanel.gd" type="Script" id=2]
+[ext_resource path="res://HUD/Temp/ToolTipPanel.gd" type="Script" id=1]
+[ext_resource path="res://ToolTip.gd" type="Script" id=2]
 
 [node name="ToolTipCanvasLayer" type="CanvasLayer"]
 layer = 2
@@ -12,7 +12,7 @@ margin_top = -0.663422
 margin_right = 471.01
 margin_bottom = 13.3366
 text = "I think this should be enough words for me or is it I dunno I'm just a dude"
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -22,4 +22,4 @@ show_behind_parent = true
 light_mask = 0
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 2 )
+script = ExtResource( 1 )
