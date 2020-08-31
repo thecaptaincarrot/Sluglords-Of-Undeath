@@ -140,9 +140,9 @@ func add_undead(undead):
 
 
 func get_undead():
-	var undead_array = []
+	var undead_here = []
 	for undead in $Undead.get_children():
-		undead_array.append(undead)
+		undead_here.append(undead)
 	
-	print(undead_array)
-	return undead_array
+	print(undead_here)
+	return undead_here

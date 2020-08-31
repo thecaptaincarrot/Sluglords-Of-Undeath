@@ -28,6 +28,10 @@ Zombie="*res://Undead/Zombie.gd"
 GlobalSkeleton="*res://Undead/Skeleton.gd"
 SuperSkeleton="*res://Undead/SuperSkeleton.gd"
 
+[debug]
+
+gdscript/warnings/integer_division=false
+
 [display]
 
 window/size/width=1280

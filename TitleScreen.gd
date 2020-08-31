@@ -17,8 +17,8 @@ func _ready():
 
 
 func _on_TestMenu_pressed():
-	get_tree().change_scene("res://Test/TestMenu.tscn")
+	var _error = get_tree().change_scene("res://Test/TestMenu.tscn")
 
 
 func _on_Button_pressed():
-	get_tree().change_scene("res://MainNodes/Game.tscn")
+	var _error = get_tree().change_scene("res://MainNodes/Game.tscn")

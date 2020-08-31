@@ -7,6 +7,8 @@ export (PackedScene) var ToolTip
 onready var ColorHex = $HeightSensitive/HexArea/Colorhex
 var Map #declared by the map itself
 var island
+
+onready var HexNode = get_parent() #Will this ever fuck up?
 #Ignore more complex functions of buildings.
 
 enum {EMPTY, SEA, LAND, PILLAR}
@@ -38,8 +40,13 @@ func _ready():
 	draw_hexagon(Vector2(0,0), 64)
 
 
+func _enter_tree():
+	$HeightSensitive/HexArea.MapHexNode = get_parent()
+	$HeightSensitive/HexArea.Hex = self
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	match type:
 		EMPTY:
 			$HeightSensitive/Graphics/Hex.frame = 0

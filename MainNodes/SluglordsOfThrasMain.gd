@@ -68,3 +68,8 @@ func pregenerate_new_player_faction():
 #Updates
 func update_HUD():
 	HUD.update_resources(player_faction.gold,player_faction.corpses,player_faction.contagion)
+
+
+func _on_Hex_hex_clicked(hex):
+	print(hex)
+	print(hex.z_index)
