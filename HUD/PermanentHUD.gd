@@ -17,6 +17,6 @@ func _ready():
 
 
 func update_resources(gold,corpses,contagion):
-	$TextureRect/GoldText.text = str(gold)
-	$TextureRect/CorpsesText.text = str(corpses)
-	$TextureRect/ContagionText.text = str(contagion)
+	$PlaceholderResourcePanel/GoldText.text = str(gold)
+	$PlaceholderResourcePanel/CorpsesText.text = str(corpses)
+	$PlaceholderResourcePanel/ContagionText.text = str(contagion)
