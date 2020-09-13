@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://MainNodes/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MainNodes/Background.tscn" type="PackedScene" id=2]
@@ -8,7 +8,9 @@
 [ext_resource path="res://HUD/PermanentHUD.gd" type="Script" id=6]
 [ext_resource path="res://MainNodes/SloadFactionNode.tscn" type="PackedScene" id=7]
 [ext_resource path="res://MainNodes/OwnedHexMenus.gd" type="Script" id=8]
+[ext_resource path="res://HUD/Temp/BuildingDescription.tscn" type="PackedScene" id=9]
 [ext_resource path="res://MainNodes/OwnedHexTabs.gd" type="Script" id=10]
+[ext_resource path="res://MainNodes/BuildPanel.gd" type="Script" id=11]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 5 )
@@ -141,8 +143,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 32.0
-margin_right = -16.0
-margin_bottom = -18.0
+margin_right = -4.0
+margin_bottom = -4.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -155,13 +157,13 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer"]
-margin_right = 230.0
+margin_right = 242.0
 margin_bottom = 14.0
 alignment = 1
 
 [node name="HexIdentifier0" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer/HBoxContainer"]
-margin_left = 78.0
-margin_right = 111.0
+margin_left = 84.0
+margin_right = 117.0
 margin_bottom = 14.0
 text = "Hex ("
 align = 1
@@ -170,8 +172,8 @@ __meta__ = {
 }
 
 [node name="AxialX" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer/HBoxContainer"]
-margin_left = 115.0
-margin_right = 123.0
+margin_left = 121.0
+margin_right = 129.0
 margin_bottom = 14.0
 text = "0"
 __meta__ = {
@@ -179,8 +181,8 @@ __meta__ = {
 }
 
 [node name="HexIdentifier1" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer/HBoxContainer"]
-margin_left = 127.0
-margin_right = 131.0
+margin_left = 133.0
+margin_right = 137.0
 margin_bottom = 14.0
 text = ","
 __meta__ = {
@@ -188,8 +190,8 @@ __meta__ = {
 }
 
 [node name="AxialY" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer/HBoxContainer"]
-margin_left = 135.0
-margin_right = 143.0
+margin_left = 141.0
+margin_right = 149.0
 margin_bottom = 14.0
 text = "0"
 __meta__ = {
@@ -197,8 +199,8 @@ __meta__ = {
 }
 
 [node name="HexIdentifier2" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer/HBoxContainer"]
-margin_left = 147.0
-margin_right = 151.0
+margin_left = 153.0
+margin_right = 157.0
 margin_bottom = 14.0
 text = ")"
 __meta__ = {
@@ -207,13 +209,13 @@ __meta__ = {
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer"]
 margin_top = 18.0
-margin_right = 230.0
+margin_right = 242.0
 margin_bottom = 32.0
 alignment = 1
 
 [node name="IslandIdentifier" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer/HBoxContainer2"]
-margin_left = 71.0
-margin_right = 126.0
+margin_left = 77.0
+margin_right = 132.0
 margin_bottom = 14.0
 text = "Island of"
 align = 1
@@ -222,8 +224,8 @@ __meta__ = {
 }
 
 [node name="IslandName" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer/HBoxContainer2"]
-margin_left = 130.0
-margin_right = 158.0
+margin_left = 136.0
+margin_right = 164.0
 margin_bottom = 14.0
 text = "TEST"
 align = 1
@@ -233,24 +235,24 @@ __meta__ = {
 
 [node name="HSeparator" type="HSeparator" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer"]
 margin_top = 36.0
-margin_right = 230.0
+margin_right = 242.0
 margin_bottom = 40.0
 
 [node name="ProductionTitle" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer"]
 margin_top = 44.0
-margin_right = 230.0
+margin_right = 242.0
 margin_bottom = 58.0
 text = "Production:"
 align = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer"]
 margin_top = 62.0
-margin_right = 230.0
+margin_right = 242.0
 margin_bottom = 112.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer/CenterContainer"]
-margin_left = 65.0
-margin_right = 164.0
+margin_left = 71.0
+margin_right = 170.0
 margin_bottom = 50.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer/CenterContainer/HBoxContainer"]
@@ -298,26 +300,26 @@ text = "999"
 
 [node name="HSeparator2" type="HSeparator" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer"]
 margin_top = 116.0
-margin_right = 230.0
+margin_right = 242.0
 margin_bottom = 120.0
 
 [node name="BuildingTitle" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer"]
 margin_top = 124.0
-margin_right = 230.0
+margin_right = 242.0
 margin_bottom = 138.0
 text = "Building:"
 align = 1
 
 [node name="BuildingName" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer"]
 margin_top = 142.0
-margin_right = 230.0
+margin_right = 242.0
 margin_bottom = 156.0
 text = "BuildingTitle"
 align = 1
 
 [node name="VerboseDescription" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/VBoxContainer"]
 margin_top = 160.0
-margin_right = 230.0
+margin_right = 242.0
 margin_bottom = 225.0
 text = "Verbose Description wordswordswordswordswordswordswordswordswordswordswordswords
 "
@@ -362,12 +364,13 @@ __meta__ = {
 }
 
 [node name="Island" type="Panel" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 32.0
-margin_right = -16.0
-margin_bottom = -18.0
+margin_right = -4.0
+margin_bottom = -4.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island"]
 anchor_right = 1.0
@@ -437,10 +440,11 @@ margin_bottom = 58.0
 [node name="BuildPanel" type="Panel" parent="HUDcanvas/ContextMenus/OwnedHexMenus"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 252.774
-margin_top = -324.774
-margin_right = 441.774
-margin_bottom = -0.773804
+margin_left = 253.0
+margin_top = -325.0
+margin_right = 602.0
+margin_bottom = -1.0
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -454,6 +458,22 @@ __meta__ = {
 }
 
 [node name="ScrollVBox" type="VBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel/ScrollContainer"]
+margin_right = 336.0
+margin_bottom = 362.0
+
+[node name="BuildingDescription" parent="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel/ScrollContainer/ScrollVBox" instance=ExtResource( 9 )]
+margin_bottom = 118.0
+target = "Docks"
+
+[node name="BuildingDescription2" parent="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel/ScrollContainer/ScrollVBox" instance=ExtResource( 9 )]
+margin_top = 122.0
+margin_bottom = 240.0
+target = "Osseorium"
+
+[node name="BuildingDescription3" parent="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel/ScrollContainer/ScrollVBox" instance=ExtResource( 9 )]
+margin_top = 244.0
+margin_bottom = 362.0
+target = "Rot Farm"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -463,10 +483,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -1999.54
-margin_top = -3000.0
+margin_top = -3001.0
 margin_right = 2000.46
-margin_bottom = 3000.0
+margin_bottom = 2999.0
 [connection signal="owned_hex_clicked" from="." to="HUDcanvas/ContextMenus/OwnedHexMenus" method="new_hex_selected"]
 [connection signal="hex_clicked" from="Map/Hex" to="." method="_on_Hex_hex_clicked"]
+[connection signal="pressed" from="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/BuildButton" to="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel" method="_on_BuildButton_pressed"]
+[connection signal="build" from="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel/ScrollContainer/ScrollVBox/BuildingDescription" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_build"]
+[connection signal="build" from="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel/ScrollContainer/ScrollVBox/BuildingDescription2" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_build"]
+[connection signal="build" from="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel/ScrollContainer/ScrollVBox/BuildingDescription3" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_build"]
 
 [editable path="Map"]

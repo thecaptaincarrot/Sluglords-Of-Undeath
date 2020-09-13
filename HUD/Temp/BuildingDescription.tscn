@@ -14,7 +14,6 @@ __meta__ = {
 [node name="BaseBox" type="HBoxContainer" parent="."]
 margin_right = 336.0
 margin_bottom = 110.0
-hint_tooltip = "Uh, what?"
 size_flags_stretch_ratio = 0.0
 __meta__ = {
 "_edit_use_anchors_": false

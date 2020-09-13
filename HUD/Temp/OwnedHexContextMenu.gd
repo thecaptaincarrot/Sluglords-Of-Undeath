@@ -48,10 +48,10 @@ func initialize_menu(hex,faction):
 
 
 func _on_BuildButton_pressed():
-	var new_window = build_panel.instance()
-	new_window.rect_position.x = rect_size.x
-	new_window.rect_size.y = rect_size.y
-	new_window.connect("mouse_entered",get_parent(),"_on_TabContainer_mouse_entered")
-	new_window.connect("mouse_exited",get_parent(),"_on_TabContainer_mouse_exited")
-	new_window.check_enabled(player_faction, target_hex)
-	get_parent().get_parent().add_child(new_window)
+	var new_window = build_panel.instance() #aka buildpanel.show()
+	new_window.rect_position.x = rect_size.x #Unnecessary
+	new_window.rect_size.y = rect_size.y #Unnecessary
+	new_window.connect("mouse_entered",get_parent(),"_on_TabContainer_mouse_entered") #Unnecessary
+	new_window.connect("mouse_exited",get_parent(),"_on_TabContainer_mouse_exited") #Unnecessary
+	new_window.check_enabled(player_faction, target_hex) #Should be passed at menu open and then check_enabled()
+	get_parent().get_parent().add_child(new_window) #Unnecessary

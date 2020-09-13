@@ -2,7 +2,9 @@ extends Control
 
 var hex
 var island
+var faction
 
+signal build
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,9 +33,14 @@ func _input(event):
 func new_hex_selected(new_hex):
 	hex = new_hex
 	island = new_hex.island
+	faction = island.faction_owner #This should ALWAYS be the player faction...
+	
 	$OwnedHexTabs.hex = hex
 	$OwnedHexTabs.island = island
 	$OwnedHexTabs.refresh_hex_menu()
+	
+	$BuildPanel.update_identities(hex,island,faction)
+	
 	for child in get_children():
 		child.hide()
 	
@@ -41,3 +48,18 @@ func new_hex_selected(new_hex):
 	show()
 
 
+func refresh_all():
+	for child in get_children():
+		child.hide()
+	
+	$OwnedHexTabs.refresh_hex_menu()
+	$BuildPanel.update_identities(hex,island,faction)
+	
+	$OwnedHexTabs.show()
+	show()
+
+func _on_build(building):
+	hex.build(building)
+	faction.build_payment(building)
+	
+	refresh_all()

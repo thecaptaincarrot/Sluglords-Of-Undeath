@@ -1,18 +1,27 @@
 extends VBoxContainer
 
-export(String,"Always Enabled","Sea Facing") var enable_condition
-
-export (String,"Docks","Osseorium","Rot Farm") var target
+export (String,"Null","Docks","Osseorium","Rot Farm") var target #this should be checked from a list of buildigns that are available to a faction due to research.
 var target_building
+
+var hex
+var island
+var faction
 
 var enabled = false 
 
 signal build
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+#This change has broken building on playerfactionnodetest.tscn
+func update_info():
+	if faction == null or hex == null or island == null:
+		print ("Tried to update info on building description but had bad info")
+		return
+	
 	init_to_target()
+	print("initted to" + target)
 	build_out_info()
+	check_enabled()
+
 
 
 func button_disable():
@@ -21,7 +30,7 @@ func button_disable():
 		$ErrorMessage.show()
 		$BaseBox/BuildingFuncs/BuildButton.disabled = true
 
-func check_enabled(faction, hex):
+func check_enabled():
 	var cost_bool = false
 	var condition_bool = false
 	
@@ -59,7 +68,7 @@ func init_to_target():
 			target_building = Docks
 		"Rot Farm":
 			target_building = RotFarm
-		
+	build_out_info()
 
 
 func build_out_info():

@@ -35,6 +35,7 @@ var building_turns_left = 0
 
 var feature
 
+var sea_facing
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	draw_hexagon(Vector2(0,0), 64)
@@ -147,6 +148,16 @@ func update_building_sprite():
 			$HeightSensitive/Graphics/Building.texture = load(building.texture)
 		else:
 			$HeightSensitive/Graphics/Building.texture = load(building.in_progress_texture)
+
+
+func check_sea_facing():
+	var neighbors = get_neighbors()
+	sea_facing = false
+	for N in neighbors:
+		if N.type == N.SEA:
+			sea_facing = true
+			return true
+	return false
 
 #Building Functions:
 func insta_build(new_building): #Building is a camel case string name of building

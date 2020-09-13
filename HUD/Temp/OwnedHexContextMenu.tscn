@@ -9,7 +9,6 @@
 [ext_resource path="res://HUD/Temp/TabContainer.gd" type="Script" id=7]
 [ext_resource path="res://HUD/Temp/AttackMenu.gd" type="Script" id=8]
 
-
 [node name="OwnedContextMenu" type="Control"]
 margin_right = 393.0
 margin_bottom = 384.0
