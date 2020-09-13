@@ -20,7 +20,10 @@ var state = DEFAULT
 var turn = 1
 
 signal turn_over #I don't think we can send turn over like this since all players need to go sequentially... Unless
-
+#The switching for the type of hex happens at this top level.
+signal owned_hex_clicked
+signal unowned_hex_clicked
+signal rival_hex_clicked
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -73,3 +76,5 @@ func update_HUD():
 func _on_Hex_hex_clicked(hex):
 	print(hex)
 	print(hex.z_index)
+	if hex.faction_owner == player_faction:
+		emit_signal("owned_hex_clicked",hex)
