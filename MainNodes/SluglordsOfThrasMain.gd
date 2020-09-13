@@ -36,8 +36,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	update_HUD()
 
 #Pregame Initializations
 func pregenerate_new_player_faction():
@@ -71,6 +71,7 @@ func pregenerate_new_player_faction():
 #Updates
 func update_HUD():
 	HUD.update_resources(player_faction.gold,player_faction.corpses,player_faction.contagion)
+	$HUDcanvas/PermanentHUD/PlaceholderTurnContainer/VBoxContainer/TurnPanel/HBoxContainer/TurnNum.text = str(turn)
 
 
 func _on_Hex_hex_clicked(hex):
@@ -78,3 +79,27 @@ func _on_Hex_hex_clicked(hex):
 	print(hex.z_index)
 	if hex.faction_owner == player_faction:
 		emit_signal("owned_hex_clicked",hex)
+
+
+func _on_NextTurnButton_pressed():
+	#This is an example of the top level of a game scene...
+	#Rather than using signal ticks, it's better to do direct function calls
+	#To preserve the order that it needs to be done in
+
+	#All objects (armies, buildings, hexes, etc) should have a reference in
+	#the faction node. as such, calling all necesary End Turn shit should 
+	#be relatively easy. At least, it should be built that way.
+	turn += 1
+	#Factions go first, collect income, etc
+	for faction in $Factions.get_children():
+		print(faction.name)
+		faction.end_of_turn()
+		
+	#update other shit
+	for N in $Map/Hex.get_children():
+		if N.has_method("end_of_turn"):
+			N.end_of_turn()
+			
+	for N in $Map/Island.get_children():
+		if N.has_method("end_of_turn"):
+			N.end_of_turn()

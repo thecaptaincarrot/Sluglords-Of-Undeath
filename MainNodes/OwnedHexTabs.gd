@@ -35,16 +35,17 @@ func refresh_hex_menu():
 		$Hex/VBoxContainer/BuildingName.text = "None"
 		$Hex/VBoxContainer/VerboseDescription.text = ""
 		$Hex/ShortDescription.text = ""
-		$Hex/BuildButton/TurnCounter.hide()
+		$Hex/BuildButton/TurnCountBox.hide()
 	else:
 		$Hex/VBoxContainer/BuildingName.text = hex.building.identity
 		$Hex/VBoxContainer/VerboseDescription.text = hex.building.verbose_description
 		$Hex/ShortDescription.text = hex.building.short_description
 		if hex.building_turns_left > 0:
-			$Hex/BuildButton/TurnCounter.show()
+			$Hex/BuildButton/TurnCountBox.show()
+			$Hex/BuildButton/TurnCountBox/TurnCountNum.text = str(hex.building_turns_left)
 			$Hex/ShortDescription.hide()
 		else:
-			$Hex/BuildButton/TurnCounter.hide()
+			$Hex/BuildButton/TurnCountBox.hide()
 			$Hex/ShortDescription.show()
 	pass
 

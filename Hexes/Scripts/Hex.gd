@@ -69,31 +69,26 @@ func define_hex_point(center : Vector2, hex_size, i):
 
 
 func draw_hexagon(center : Vector2, hex_size):
-	var from_point = Vector2(0,0)
 	var array = PoolVector2Array()
 	
 	for i in range (6):
 		#create new line with all points
-		from_point = define_hex_point(center,hex_size,i)
-		array.append(from_point)
-		
-	array.append(define_hex_point(center,hex_size,0)) #Connect the Point
+		array.append(define_hex_point(center,hex_size,i))
 	
 	$HeightSensitive/HexArea/CollisionHex.polygon = array
 	$HeightSensitive/HexArea/Colorhex.polygon = array
-#	#Draw border hex 2 bigger
-#	from_point = Vector2(0,0)
-#	var new_array = PoolVector2Array()
-#
-#	for i in range (6):
-#		#create new line with all points
-#		from_point = define_hex_point(center,hex_size + border_thickness,i)
-#		new_array.append(from_point)
-#
-#	new_array.append(define_hex_point(center,hex_size + border_thickness,0)) #Connect the Point
-#
-#	$BorderHex.polygon = new_array
-#	$BorderHex.color = Color(1.0,0,0,0)
+	
+	var border_offset = 10
+	var i = 0
+	for child in $HeightSensitive/SelectionPolys.get_children():
+		array = PoolVector2Array()
+		array.append(define_hex_point(center,hex_size - 2,i))
+		array.append(define_hex_point(center,hex_size - 2,i + 1))
+		array.append(define_hex_point(center,hex_size - 2 - border_offset,i + 1))
+		array.append(define_hex_point(center,hex_size - 2 - border_offset,i))
+		
+		child.polygon = array
+		i = i + 1
 
 
 func height_offset(height):
@@ -127,7 +122,22 @@ func distance_to_hex(target_hex):
 func get_neighbors():
 	return Map.get_neighbors(self)
 
+
+func select():
+	$HeightSensitive/SelectionPolys.show()
+
+
+func deselect():
+	$HeightSensitive/SelectionPolys.hide()
+
 #Update functions
+func end_of_turn():
+	if building_turns_left > 0:
+		building_turns_left -= 1
+	
+	update_production()
+	update_building_sprite()
+
 func update_production():
 	gold_production = 5
 	corpse_production = 1
@@ -173,6 +183,5 @@ func build(new_building):
 	building_turns_left = new_building.build_time
 	update_building_sprite()
 	#Building is
-	 
-
+	
 

@@ -90,12 +90,25 @@ __meta__ = {
 margin_right = 74.0
 margin_bottom = 28.0
 
-[node name="TurnNumber" type="Label" parent="HUDcanvas/PermanentHUD/PlaceholderTurnContainer/VBoxContainer/TurnPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUDcanvas/PermanentHUD/PlaceholderTurnContainer/VBoxContainer/TurnPanel"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 67.0
 margin_bottom = 21.0
-text = "Turn: 1"
+
+[node name="Turn" type="Label" parent="HUDcanvas/PermanentHUD/PlaceholderTurnContainer/VBoxContainer/TurnPanel/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 14.0
+text = "Turn:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TurnNum" type="Label" parent="HUDcanvas/PermanentHUD/PlaceholderTurnContainer/VBoxContainer/TurnPanel/HBoxContainer"]
+margin_left = 36.0
+margin_right = 44.0
+margin_bottom = 14.0
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -118,6 +131,7 @@ __meta__ = {
 }
 
 [node name="OwnedHexMenus" type="Control" parent="HUDcanvas/ContextMenus"]
+visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -40.0
@@ -335,13 +349,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TurnCounter" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/BuildButton"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 10.0
-margin_bottom = 24.0
-text = "Turns Left: 0"
+[node name="TurnCountBox" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/BuildButton"]
+margin_top = 50.0
+margin_right = 79.0
+margin_bottom = 90.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TurnCounter" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/BuildButton/TurnCountBox"]
+margin_top = 12.0
+margin_right = 67.0
+margin_bottom = 26.0
+text = "Turns Left:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TurnCountNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/BuildButton/TurnCountBox"]
+margin_left = 71.0
+margin_top = 12.0
+margin_right = 87.0
+margin_bottom = 26.0
+text = "99"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -488,6 +519,8 @@ margin_right = 2000.46
 margin_bottom = 2999.0
 [connection signal="owned_hex_clicked" from="." to="HUDcanvas/ContextMenus/OwnedHexMenus" method="new_hex_selected"]
 [connection signal="hex_clicked" from="Map/Hex" to="." method="_on_Hex_hex_clicked"]
+[connection signal="pressed" from="HUDcanvas/PermanentHUD/PlaceholderTurnContainer/VBoxContainer/NextTurnButton" to="." method="_on_NextTurnButton_pressed"]
+[connection signal="tab_changed" from="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_OwnedHexTabs_tab_changed"]
 [connection signal="pressed" from="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/BuildButton" to="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel" method="_on_BuildButton_pressed"]
 [connection signal="build" from="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel/ScrollContainer/ScrollVBox/BuildingDescription" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_build"]
 [connection signal="build" from="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel/ScrollContainer/ScrollVBox/BuildingDescription2" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_build"]

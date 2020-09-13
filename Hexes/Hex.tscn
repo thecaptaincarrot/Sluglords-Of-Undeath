@@ -41,3 +41,24 @@ __meta__ = {
 
 [node name="Colorhex" type="Polygon2D" parent="HeightSensitive/HexArea"]
 color = Color( 1, 1, 1, 0 )
+
+[node name="SelectionPolys" type="Node2D" parent="HeightSensitive"]
+visible = false
+
+[node name="Selectionhex0" type="Polygon2D" parent="HeightSensitive/SelectionPolys"]
+color = Color( 0.956863, 0.905882, 0.101961, 0.803922 )
+
+[node name="Selectionhex1" type="Polygon2D" parent="HeightSensitive/SelectionPolys"]
+color = Color( 0.956863, 0.905882, 0.101961, 0.803922 )
+
+[node name="Selectionhex2" type="Polygon2D" parent="HeightSensitive/SelectionPolys"]
+color = Color( 0.956863, 0.905882, 0.101961, 0.803922 )
+
+[node name="Selectionhex3" type="Polygon2D" parent="HeightSensitive/SelectionPolys"]
+color = Color( 0.956863, 0.905882, 0.101961, 0.803922 )
+
+[node name="Selectionhex4" type="Polygon2D" parent="HeightSensitive/SelectionPolys"]
+color = Color( 0.956863, 0.905882, 0.101961, 0.803922 )
+
+[node name="Selectionhex5" type="Polygon2D" parent="HeightSensitive/SelectionPolys"]
+color = Color( 0.956863, 0.905882, 0.101961, 0.803922 )
