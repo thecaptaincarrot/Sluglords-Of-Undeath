@@ -103,6 +103,7 @@ func build_map_new():
 							new_island.init_pillar()
 							$Island.add_child(new_island)
 							islands.append(new_island)
+							hex_map[q][r].island = new_island
 						eligible_tiles[q][r] = null
 	#edge is not available
 	for q in range(-(len(eligible_tiles) - 1) / 2, 1 + (len(eligible_tiles) - 1) / 2) :

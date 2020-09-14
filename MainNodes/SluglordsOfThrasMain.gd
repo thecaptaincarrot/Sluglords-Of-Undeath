@@ -79,6 +79,8 @@ func _on_Hex_hex_clicked(hex):
 	print(hex.z_index)
 	if hex.faction_owner == player_faction:
 		emit_signal("owned_hex_clicked",hex)
+	elif hex.faction_owner == null:
+		emit_signal("unowned_hex_clicked",hex)
 
 
 func _on_NextTurnButton_pressed():
