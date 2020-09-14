@@ -18,7 +18,7 @@ func _ready():
 
 
 func _input(event):
-	if (event is InputEventMouseButton) and event.pressed and is_visible():
+	if event.is_action_pressed("ui_left_click") and event.pressed and is_visible():
 		var evLocal
 		var clicked_in_rect = false
 		
@@ -34,13 +34,24 @@ func _input(event):
 
 
 func new_hex_selected(new_hex):
-	$OwnedHexTabs.current_tab = 0
+	if island != null:
+		for N in island.get_hexes():
+			N.deselect() #Should this be a signal? hmmmmm
+	
+	if new_hex == hex and !island.is_selected:
+		$OwnedHexTabs.current_tab = 1
+		for N in island.get_hexes():
+			N.select()
+	else:
+		$OwnedHexTabs.current_tab = 0
+		if hex != null:
+			hex.deselect()
+	
 	hex = new_hex
 	island = new_hex.island
 	faction = island.faction_owner #This should ALWAYS be the player faction...
 	
-	for N in island.get_hexes():
-		N.deselect() #Should this be a signal? hmmmmm
+
 	
 	hex.select()
 	
@@ -81,9 +92,11 @@ func _on_build(building):
 func _on_OwnedHexTabs_tab_changed(tab):
 	close_all_but_main()
 	if tab == 0:
+		island.is_selected = false
 		for N in island.get_hexes():
 			N.deselect()
 		hex.select()
 	elif tab == 1:
+		island.is_selected = true
 		for N in island.get_hexes():
 			N.select()

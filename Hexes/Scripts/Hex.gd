@@ -35,6 +35,7 @@ var building_turns_left = 0
 
 var feature
 
+var is_selected = false
 var sea_facing
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -124,10 +125,12 @@ func get_neighbors():
 
 
 func select():
+	is_selected = true
 	$HeightSensitive/SelectionPolys.show()
 
 
 func deselect():
+	is_selected = false
 	$HeightSensitive/SelectionPolys.hide()
 
 #Update functions

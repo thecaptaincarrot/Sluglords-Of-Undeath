@@ -16,6 +16,8 @@ var undead_queue = [] #array of the undead queue
 
 var recruitment_capacity = 2
 
+var is_selected = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
