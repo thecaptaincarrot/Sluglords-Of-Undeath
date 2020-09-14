@@ -75,8 +75,9 @@ func update_HUD():
 
 
 func _on_Hex_hex_clicked(hex):
-	print(hex)
-	print(hex.z_index)
+	if hex.type == hex.SEA:
+		return
+	
 	if hex.faction_owner == player_faction:
 		emit_signal("owned_hex_clicked",hex)
 	elif hex.faction_owner == null:
