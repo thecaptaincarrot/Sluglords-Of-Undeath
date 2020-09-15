@@ -133,7 +133,6 @@ __meta__ = {
 }
 
 [node name="OwnedHexMenus" type="Control" parent="HUDcanvas/ContextMenus"]
-visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -40.0
@@ -155,6 +154,7 @@ __meta__ = {
 }
 
 [node name="Hex" type="Panel" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -397,7 +397,6 @@ __meta__ = {
 }
 
 [node name="Island" type="Panel" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -413,64 +412,367 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer"]
-margin_right = 230.0
+margin_right = 242.0
 margin_bottom = 14.0
 alignment = 1
 
 [node name="IslandTitle" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/HBoxContainer"]
-margin_left = 70.0
-margin_right = 128.0
+margin_left = 76.0
+margin_right = 134.0
 margin_bottom = 14.0
 text = "Island Of"
 
 [node name="IslandName" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/HBoxContainer"]
-margin_left = 132.0
-margin_right = 160.0
+margin_left = 138.0
+margin_right = 166.0
 margin_bottom = 14.0
 text = "TEST"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer"]
 margin_top = 18.0
-margin_right = 230.0
+margin_right = 242.0
 margin_bottom = 32.0
 alignment = 1
 
 [node name="SizeTitle" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/HBoxContainer2"]
-margin_left = 94.0
-margin_right = 124.0
+margin_left = 100.0
+margin_right = 130.0
 margin_bottom = 14.0
 text = "Size:"
 
 [node name="SizeNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/HBoxContainer2"]
-margin_left = 128.0
-margin_right = 136.0
+margin_left = 134.0
+margin_right = 142.0
 margin_bottom = 14.0
 text = "7"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer"]
 margin_top = 36.0
-margin_right = 230.0
+margin_right = 242.0
 margin_bottom = 50.0
 alignment = 1
 
 [node name="OwnerTitle" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/HBoxContainer3"]
-margin_left = 69.0
-margin_right = 115.0
+margin_left = 75.0
+margin_right = 121.0
 margin_bottom = 14.0
 text = "Owner:"
 
 [node name="OwnerName" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/HBoxContainer3"]
-margin_left = 119.0
-margin_right = 160.0
+margin_left = 125.0
+margin_right = 166.0
 margin_bottom = 14.0
 text = "K'arrot"
 
 [node name="HSeparator" type="HSeparator" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer"]
 margin_top = 54.0
-margin_right = 230.0
+margin_right = 242.0
 margin_bottom = 58.0
 
+[node name="ProductionTitle" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer"]
+margin_top = 62.0
+margin_right = 242.0
+margin_bottom = 76.0
+text = "Production:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProductionBox" type="CenterContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer"]
+margin_top = 80.0
+margin_right = 242.0
+margin_bottom = 130.0
+
+[node name="production" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/ProductionBox"]
+margin_left = 73.0
+margin_right = 168.0
+margin_bottom = 50.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/ProductionBox/production"]
+margin_right = 67.0
+margin_bottom = 50.0
+
+[node name="GoldTitle" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/ProductionBox/production/HBoxContainer"]
+margin_right = 67.0
+margin_bottom = 14.0
+text = "Gold:"
+
+[node name="CorpsesTitle" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/ProductionBox/production/HBoxContainer"]
+margin_top = 18.0
+margin_right = 67.0
+margin_bottom = 32.0
+text = "Corpses:"
+
+[node name="ContagionTitle" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/ProductionBox/production/HBoxContainer"]
+margin_top = 36.0
+margin_right = 67.0
+margin_bottom = 50.0
+text = "Contagion:"
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/ProductionBox/production"]
+margin_left = 71.0
+margin_right = 95.0
+margin_bottom = 50.0
+
+[node name="GoldNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/ProductionBox/production/HBoxContainer2"]
+margin_right = 24.0
+margin_bottom = 14.0
+text = "999"
+
+[node name="CorpsesNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/ProductionBox/production/HBoxContainer2"]
+margin_top = 18.0
+margin_right = 24.0
+margin_bottom = 32.0
+text = "999"
+
+[node name="ContagionNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/ProductionBox/production/HBoxContainer2"]
+margin_top = 36.0
+margin_right = 24.0
+margin_bottom = 50.0
+text = "999"
+
+[node name="HSeparator2" type="HSeparator" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer"]
+margin_top = 134.0
+margin_right = 242.0
+margin_bottom = 138.0
+
+[node name="QueueBox" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer"]
+margin_top = 142.0
+margin_right = 242.0
+margin_bottom = 300.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox"]
+margin_right = 110.0
+margin_bottom = 158.0
+
+[node name="Queue1" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
+margin_right = 110.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 110, 0 )
+
+[node name="QueueNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue1"]
+margin_right = 12.0
+margin_bottom = 14.0
+text = "1."
+
+[node name="QueueIdentity" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue1"]
+margin_left = 16.0
+margin_right = 71.0
+margin_bottom = 14.0
+text = "Butthole"
+
+[node name="TurnsLeft" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue1"]
+margin_left = 75.0
+margin_right = 83.0
+margin_bottom = 14.0
+text = "1"
+
+[node name="Queue2" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
+margin_top = 18.0
+margin_right = 110.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 110, 0 )
+
+[node name="QueueNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue2"]
+margin_right = 12.0
+margin_bottom = 14.0
+text = "2."
+
+[node name="QueueIdentity" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue2"]
+margin_left = 16.0
+margin_right = 71.0
+margin_bottom = 14.0
+text = "Butthole"
+
+[node name="TurnsLeft" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue2"]
+margin_left = 75.0
+margin_right = 83.0
+margin_bottom = 14.0
+text = "2"
+
+[node name="Queue3" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
+margin_top = 36.0
+margin_right = 110.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 110, 0 )
+
+[node name="QueueNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue3"]
+margin_right = 12.0
+margin_bottom = 14.0
+text = "3."
+
+[node name="QueueIdentity" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue3"]
+margin_left = 16.0
+margin_right = 71.0
+margin_bottom = 14.0
+text = "Butthole"
+
+[node name="TurnsLeft" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue3"]
+margin_left = 75.0
+margin_right = 83.0
+margin_bottom = 14.0
+text = "3"
+
+[node name="Queue4" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
+margin_top = 54.0
+margin_right = 110.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 110, 0 )
+
+[node name="QueueNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue4"]
+margin_right = 12.0
+margin_bottom = 14.0
+text = "4."
+
+[node name="QueueIdentity" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue4"]
+margin_left = 16.0
+margin_right = 71.0
+margin_bottom = 14.0
+text = "Butthole"
+
+[node name="TurnsLeft" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue4"]
+margin_left = 75.0
+margin_right = 83.0
+margin_bottom = 14.0
+text = "2"
+
+[node name="Queue5" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
+margin_top = 72.0
+margin_right = 110.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 110, 0 )
+
+[node name="QueueNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue5"]
+margin_right = 12.0
+margin_bottom = 14.0
+text = "5."
+
+[node name="QueueIdentity" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue5"]
+margin_left = 16.0
+margin_right = 71.0
+margin_bottom = 14.0
+text = "Butthole"
+
+[node name="TurnsLeft" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue5"]
+margin_left = 75.0
+margin_right = 83.0
+margin_bottom = 14.0
+text = "1"
+
+[node name="Queue6" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
+margin_top = 90.0
+margin_right = 110.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 110, 0 )
+
+[node name="QueueNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue6"]
+margin_right = 12.0
+margin_bottom = 14.0
+text = "6."
+
+[node name="QueueIdentity" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue6"]
+margin_left = 16.0
+margin_right = 71.0
+margin_bottom = 14.0
+text = "Butthole"
+
+[node name="TurnsLeft" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue6"]
+margin_left = 75.0
+margin_right = 83.0
+margin_bottom = 14.0
+text = "3"
+
+[node name="Queue7" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
+margin_top = 108.0
+margin_right = 110.0
+margin_bottom = 122.0
+rect_min_size = Vector2( 110, 0 )
+
+[node name="QueueNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue7"]
+margin_right = 12.0
+margin_bottom = 14.0
+text = "7."
+
+[node name="QueueIdentity" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue7"]
+margin_left = 16.0
+margin_right = 71.0
+margin_bottom = 14.0
+text = "Butthole"
+
+[node name="TurnsLeft" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue7"]
+margin_left = 75.0
+margin_right = 83.0
+margin_bottom = 14.0
+text = "2"
+
+[node name="Queue8" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
+margin_top = 126.0
+margin_right = 110.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 110, 0 )
+
+[node name="QueueNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue8"]
+margin_right = 12.0
+margin_bottom = 14.0
+text = "8."
+
+[node name="QueueIdentity" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue8"]
+margin_left = 16.0
+margin_right = 71.0
+margin_bottom = 14.0
+text = "Butthole"
+
+[node name="TurnsLeft" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue8"]
+margin_left = 75.0
+margin_right = 83.0
+margin_bottom = 14.0
+text = "1"
+
+[node name="Etc" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
+margin_top = 144.0
+margin_right = 110.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 110, 0 )
+text = "..."
+
+[node name="VSeparator" type="VSeparator" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox"]
+margin_left = 114.0
+margin_right = 118.0
+margin_bottom = 158.0
+
+[node name="ForcesButton" type="Button" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island"]
+margin_left = 125.43
+margin_top = 144.698
+margin_right = 232.43
+margin_bottom = 181.698
+text = "Undead Forces"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RecruitButton" type="Button" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island"]
+margin_left = 123.335
+margin_top = 194.698
+margin_right = 233.335
+margin_bottom = 231.698
+text = "Recruit Undead"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AttackButton" type="Button" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island"]
+margin_left = 125.43
+margin_top = 244.698
+margin_right = 232.43
+margin_bottom = 281.698
+text = "Launch Attack"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="BuildPanel" type="Panel" parent="HUDcanvas/ContextMenus/OwnedHexMenus"]
+visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 253.0

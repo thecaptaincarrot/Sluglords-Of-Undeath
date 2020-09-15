@@ -24,6 +24,7 @@ signal turn_over #I don't think we can send turn over like this since all player
 signal owned_hex_clicked
 signal unowned_hex_clicked
 signal rival_hex_clicked
+signal sea_hex_clicked
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -76,6 +77,7 @@ func update_HUD():
 
 func _on_Hex_hex_clicked(hex):
 	if hex.type == hex.SEA:
+		emit_signal("sea_hex_clicked",hex)
 		return
 	
 	if hex.faction_owner == player_faction:

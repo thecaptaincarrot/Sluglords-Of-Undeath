@@ -63,7 +63,7 @@ func get_gold_production():
 	return gold_count
 
 
-func get_corpse_production():
+func get_corpses_production():
 	var corpses_count = 0
 	for hex in hexes:
 		hex.update_production()

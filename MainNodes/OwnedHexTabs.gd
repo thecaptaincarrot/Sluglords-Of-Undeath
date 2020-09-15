@@ -51,4 +51,46 @@ func refresh_hex_menu():
 
 
 func refresh_island_menu():
-	pass
+	$Island/VBoxContainer/HBoxContainer/IslandName.text = island.name
+	$Island/VBoxContainer/HBoxContainer2/SizeNum.text = str(len(island.hexes))
+	$Island/VBoxContainer/HBoxContainer3/OwnerName.text = island.faction_owner.name
+	
+	$Island/VBoxContainer/ProductionBox/production/HBoxContainer2/GoldNum.text = str(island.get_gold_production())
+	$Island/VBoxContainer/ProductionBox/production/HBoxContainer2/CorpsesNum.text = str(island.get_corpses_production())
+	$Island/VBoxContainer/ProductionBox/production/HBoxContainer2/ContagionNum.text = str(island.get_contagion_production())
+	
+	#update queue
+	for i in range(8):
+		print(i)
+		var target_box = $Island/VBoxContainer/QueueBox/VBoxContainer.get_child(i)
+		print(target_box)
+		var target_label = target_box.get_node("QueueIdentity") #ugh
+		var target_turns_label = target_box.get_node("TurnsLeft")
+		
+		target_label.text = ""
+		target_turns_label.text = ""
+	
+	var queue_length = len(island.undead_queue)
+	
+	if queue_length > 8:
+		$Island/VBoxContainer/QueueBox/VBoxContainer/Etc.show()
+		queue_length = 8 #cap at 8 places
+	else:
+		$Island/VBoxContainer/QueueBox/VBoxContainer/Etc.hide()
+		
+	for i in range(queue_length):
+		var target_box = $Island/VBoxContainer/QueueBox.get_child(i)
+		var target_label = target_box.get_node("QueueIdentity") #ugh
+		var target_turns_label = target_box.get_node("TurnsLeft")
+		
+		var prospective_undead = island.undead_queue[i]["type"]
+		var turns_left = island.undead_queue[i]["turns"]
+		
+		target_label.text = prospective_undead.identity
+		target_turns_label.text = str(turns_left)
+		
+		
+		
+		
+		
+	

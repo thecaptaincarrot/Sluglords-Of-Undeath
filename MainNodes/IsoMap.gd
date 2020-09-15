@@ -8,7 +8,7 @@ export var size = 64
 export var map_size = 10
 export var min_island_size = 8
 export var max_island_size = 12
-export var distance_between_islands = 1
+export var distance_between_islands = 2
 
 var islands = []
 

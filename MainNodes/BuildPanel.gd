@@ -28,4 +28,7 @@ func update_identities(hex,island,faction):
 
 
 func _on_BuildButton_pressed():
-	show()
+	if is_visible():
+		hide()
+	else:
+		show()

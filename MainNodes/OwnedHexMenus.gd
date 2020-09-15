@@ -9,7 +9,7 @@ signal deselect
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,6 +58,7 @@ func new_hex_selected(new_hex):
 	$OwnedHexTabs.hex = hex
 	$OwnedHexTabs.island = island
 	$OwnedHexTabs.refresh_hex_menu()
+	$OwnedHexTabs.refresh_island_menu()
 	
 	$BuildPanel.update_identities(hex,island,faction)
 	
@@ -77,6 +78,7 @@ func refresh_all():
 		child.hide()
 	
 	$OwnedHexTabs.refresh_hex_menu()
+	$OwnedHexTabs.refresh_island_menu()
 	$BuildPanel.update_identities(hex,island,faction)
 	
 	$OwnedHexTabs.show()
