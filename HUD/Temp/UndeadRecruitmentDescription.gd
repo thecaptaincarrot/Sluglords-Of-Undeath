@@ -2,7 +2,7 @@ extends VBoxContainer
 
 export(String,"Always Enabled","Osseorium") var enable_condition
 
-export (String,"Zombie","Skeleton","Super Skeleton") var target
+export (String,"Null","Zombie","Skeleton","Super Skeleton") var target
 
 var target_undead = GlobalSkeleton
 var enabled = false

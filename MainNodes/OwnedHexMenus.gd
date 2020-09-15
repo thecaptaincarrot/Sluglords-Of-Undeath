@@ -102,3 +102,11 @@ func _on_OwnedHexTabs_tab_changed(tab):
 		island.is_selected = true
 		for N in island.get_hexes():
 			N.select()
+
+
+func _on_BuildButton_pressed():
+	close_all_but_main()
+
+
+func _on_RecruitButton_pressed():
+	close_all_but_main()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://MainNodes/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MainNodes/Background.tscn" type="PackedScene" id=2]
@@ -13,6 +13,9 @@
 [ext_resource path="res://MainNodes/BuildPanel.gd" type="Script" id=11]
 [ext_resource path="res://MainNodes/UnownedHexMenus.gd" type="Script" id=12]
 [ext_resource path="res://MainNodes/UnownedHexTabs.gd" type="Script" id=13]
+[ext_resource path="res://HUD/Temp/UndeadRecruitmentDescription.tscn" type="PackedScene" id=14]
+[ext_resource path="res://HUD/QueueElement.tscn" type="PackedScene" id=15]
+[ext_resource path="res://MainNodes/RecruitPanel.gd" type="Script" id=16]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 5 )
@@ -154,7 +157,6 @@ __meta__ = {
 }
 
 [node name="Hex" type="Panel" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -397,6 +399,7 @@ __meta__ = {
 }
 
 [node name="Island" type="Panel" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -537,210 +540,6 @@ margin_top = 134.0
 margin_right = 242.0
 margin_bottom = 138.0
 
-[node name="QueueBox" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer"]
-margin_top = 142.0
-margin_right = 242.0
-margin_bottom = 300.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox"]
-margin_right = 110.0
-margin_bottom = 158.0
-
-[node name="Queue1" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
-margin_right = 110.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 110, 0 )
-
-[node name="QueueNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue1"]
-margin_right = 12.0
-margin_bottom = 14.0
-text = "1."
-
-[node name="QueueIdentity" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue1"]
-margin_left = 16.0
-margin_right = 71.0
-margin_bottom = 14.0
-text = "Butthole"
-
-[node name="TurnsLeft" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue1"]
-margin_left = 75.0
-margin_right = 83.0
-margin_bottom = 14.0
-text = "1"
-
-[node name="Queue2" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
-margin_top = 18.0
-margin_right = 110.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 110, 0 )
-
-[node name="QueueNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue2"]
-margin_right = 12.0
-margin_bottom = 14.0
-text = "2."
-
-[node name="QueueIdentity" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue2"]
-margin_left = 16.0
-margin_right = 71.0
-margin_bottom = 14.0
-text = "Butthole"
-
-[node name="TurnsLeft" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue2"]
-margin_left = 75.0
-margin_right = 83.0
-margin_bottom = 14.0
-text = "2"
-
-[node name="Queue3" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
-margin_top = 36.0
-margin_right = 110.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 110, 0 )
-
-[node name="QueueNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue3"]
-margin_right = 12.0
-margin_bottom = 14.0
-text = "3."
-
-[node name="QueueIdentity" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue3"]
-margin_left = 16.0
-margin_right = 71.0
-margin_bottom = 14.0
-text = "Butthole"
-
-[node name="TurnsLeft" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue3"]
-margin_left = 75.0
-margin_right = 83.0
-margin_bottom = 14.0
-text = "3"
-
-[node name="Queue4" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
-margin_top = 54.0
-margin_right = 110.0
-margin_bottom = 68.0
-rect_min_size = Vector2( 110, 0 )
-
-[node name="QueueNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue4"]
-margin_right = 12.0
-margin_bottom = 14.0
-text = "4."
-
-[node name="QueueIdentity" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue4"]
-margin_left = 16.0
-margin_right = 71.0
-margin_bottom = 14.0
-text = "Butthole"
-
-[node name="TurnsLeft" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue4"]
-margin_left = 75.0
-margin_right = 83.0
-margin_bottom = 14.0
-text = "2"
-
-[node name="Queue5" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
-margin_top = 72.0
-margin_right = 110.0
-margin_bottom = 86.0
-rect_min_size = Vector2( 110, 0 )
-
-[node name="QueueNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue5"]
-margin_right = 12.0
-margin_bottom = 14.0
-text = "5."
-
-[node name="QueueIdentity" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue5"]
-margin_left = 16.0
-margin_right = 71.0
-margin_bottom = 14.0
-text = "Butthole"
-
-[node name="TurnsLeft" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue5"]
-margin_left = 75.0
-margin_right = 83.0
-margin_bottom = 14.0
-text = "1"
-
-[node name="Queue6" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
-margin_top = 90.0
-margin_right = 110.0
-margin_bottom = 104.0
-rect_min_size = Vector2( 110, 0 )
-
-[node name="QueueNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue6"]
-margin_right = 12.0
-margin_bottom = 14.0
-text = "6."
-
-[node name="QueueIdentity" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue6"]
-margin_left = 16.0
-margin_right = 71.0
-margin_bottom = 14.0
-text = "Butthole"
-
-[node name="TurnsLeft" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue6"]
-margin_left = 75.0
-margin_right = 83.0
-margin_bottom = 14.0
-text = "3"
-
-[node name="Queue7" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
-margin_top = 108.0
-margin_right = 110.0
-margin_bottom = 122.0
-rect_min_size = Vector2( 110, 0 )
-
-[node name="QueueNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue7"]
-margin_right = 12.0
-margin_bottom = 14.0
-text = "7."
-
-[node name="QueueIdentity" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue7"]
-margin_left = 16.0
-margin_right = 71.0
-margin_bottom = 14.0
-text = "Butthole"
-
-[node name="TurnsLeft" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue7"]
-margin_left = 75.0
-margin_right = 83.0
-margin_bottom = 14.0
-text = "2"
-
-[node name="Queue8" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
-margin_top = 126.0
-margin_right = 110.0
-margin_bottom = 140.0
-rect_min_size = Vector2( 110, 0 )
-
-[node name="QueueNum" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue8"]
-margin_right = 12.0
-margin_bottom = 14.0
-text = "8."
-
-[node name="QueueIdentity" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue8"]
-margin_left = 16.0
-margin_right = 71.0
-margin_bottom = 14.0
-text = "Butthole"
-
-[node name="TurnsLeft" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer/Queue8"]
-margin_left = 75.0
-margin_right = 83.0
-margin_bottom = 14.0
-text = "1"
-
-[node name="Etc" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox/VBoxContainer"]
-margin_top = 144.0
-margin_right = 110.0
-margin_bottom = 158.0
-rect_min_size = Vector2( 110, 0 )
-text = "..."
-
-[node name="VSeparator" type="VSeparator" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/VBoxContainer/QueueBox"]
-margin_left = 114.0
-margin_right = 118.0
-margin_bottom = 158.0
-
 [node name="ForcesButton" type="Button" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island"]
 margin_left = 125.43
 margin_top = 144.698
@@ -770,6 +569,26 @@ text = "Launch Attack"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="QueueScrollBox" type="ScrollContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = -172.0
+margin_right = 119.0
+margin_bottom = -2.00003
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QueueVBox" type="VBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/QueueScrollBox"]
+margin_right = 110.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QueueElement" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/QueueScrollBox/QueueVBox" instance=ExtResource( 15 )]
 
 [node name="BuildPanel" type="Panel" parent="HUDcanvas/ContextMenus/OwnedHexMenus"]
 visible = false
@@ -809,6 +628,45 @@ target = "Osseorium"
 margin_top = 244.0
 margin_bottom = 362.0
 target = "Rot Farm"
+
+[node name="RecruitPanel" type="Panel" parent="HUDcanvas/ContextMenus/OwnedHexMenus"]
+margin_left = 254.0
+margin_top = -288.0
+margin_right = 848.0
+margin_bottom = 38.0
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RecruitmentBox" type="ScrollContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/RecruitPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/RecruitPanel/RecruitmentBox"]
+margin_right = 505.0
+margin_bottom = 362.0
+
+[node name="UndeadRecruitDescription" parent="HUDcanvas/ContextMenus/OwnedHexMenus/RecruitPanel/RecruitmentBox/VBoxContainer" instance=ExtResource( 14 )]
+margin_right = 505.0
+margin_bottom = 118.0
+target = "Zombie"
+
+[node name="UndeadRecruitDescription2" parent="HUDcanvas/ContextMenus/OwnedHexMenus/RecruitPanel/RecruitmentBox/VBoxContainer" instance=ExtResource( 14 )]
+margin_top = 122.0
+margin_right = 505.0
+margin_bottom = 240.0
+target = "Skeleton"
+
+[node name="UndeadRecruitDescription3" parent="HUDcanvas/ContextMenus/OwnedHexMenus/RecruitPanel/RecruitmentBox/VBoxContainer" instance=ExtResource( 14 )]
+margin_top = 244.0
+margin_right = 505.0
+margin_bottom = 362.0
+enable_condition = "Osseorium"
+target = "Super Skeleton"
 
 [node name="UnownedHexMenus" type="Control" parent="HUDcanvas/ContextMenus"]
 visible = false
@@ -1463,7 +1321,10 @@ margin_bottom = 2999.0
 [connection signal="hex_clicked" from="Map/Hex" to="." method="_on_Hex_hex_clicked"]
 [connection signal="pressed" from="HUDcanvas/PermanentHUD/PlaceholderTurnContainer/VBoxContainer/NextTurnButton" to="." method="_on_NextTurnButton_pressed"]
 [connection signal="tab_changed" from="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_OwnedHexTabs_tab_changed"]
+[connection signal="pressed" from="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/BuildButton" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_BuildButton_pressed"]
 [connection signal="pressed" from="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Hex/BuildButton" to="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel" method="_on_BuildButton_pressed"]
+[connection signal="pressed" from="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/RecruitButton" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_RecruitButton_pressed"]
+[connection signal="pressed" from="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs/Island/RecruitButton" to="HUDcanvas/ContextMenus/OwnedHexMenus/RecruitPanel" method="_on_RecruitButton_pressed"]
 [connection signal="build" from="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel/ScrollContainer/ScrollVBox/BuildingDescription" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_build"]
 [connection signal="build" from="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel/ScrollContainer/ScrollVBox/BuildingDescription2" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_build"]
 [connection signal="build" from="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel/ScrollContainer/ScrollVBox/BuildingDescription3" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_build"]

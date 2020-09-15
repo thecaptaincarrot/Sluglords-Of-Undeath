@@ -1,5 +1,7 @@
 extends TabContainer
 
+export (PackedScene) var QueueElement
+
 var hex
 var island
 
@@ -60,37 +62,17 @@ func refresh_island_menu():
 	$Island/VBoxContainer/ProductionBox/production/HBoxContainer2/ContagionNum.text = str(island.get_contagion_production())
 	
 	#update queue
-	for i in range(8):
-		print(i)
-		var target_box = $Island/VBoxContainer/QueueBox/VBoxContainer.get_child(i)
-		print(target_box)
-		var target_label = target_box.get_node("QueueIdentity") #ugh
-		var target_turns_label = target_box.get_node("TurnsLeft")
+	for N in $Island/QueueScrollBox/QueueVBox.get_children():
+		N.queue_free()
 		
-		target_label.text = ""
-		target_turns_label.text = ""
+	var i = 1
 	
-	var queue_length = len(island.undead_queue)
-	
-	if queue_length > 8:
-		$Island/VBoxContainer/QueueBox/VBoxContainer/Etc.show()
-		queue_length = 8 #cap at 8 places
-	else:
-		$Island/VBoxContainer/QueueBox/VBoxContainer/Etc.hide()
+	for undead in island.undead_queue:
+		var undead_name = undead["type"].identity
+		var turns = undead["turns"]
 		
-	for i in range(queue_length):
-		var target_box = $Island/VBoxContainer/QueueBox.get_child(i)
-		var target_label = target_box.get_node("QueueIdentity") #ugh
-		var target_turns_label = target_box.get_node("TurnsLeft")
+		var new_element = QueueElement.instance()
+		new_element.update_info(i, undead_name, turns)
+		$Island/QueueScrollBox/QueueVBox.add_child(new_element)
 		
-		var prospective_undead = island.undead_queue[i]["type"]
-		var turns_left = island.undead_queue[i]["turns"]
-		
-		target_label.text = prospective_undead.identity
-		target_turns_label.text = str(turns_left)
-		
-		
-		
-		
-		
-	
+		i = i + 1
