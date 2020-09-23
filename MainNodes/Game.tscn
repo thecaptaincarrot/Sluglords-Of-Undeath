@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://MainNodes/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MainNodes/Background.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://HUD/Temp/UndeadRecruitmentDescription.tscn" type="PackedScene" id=14]
 [ext_resource path="res://HUD/QueueElement.tscn" type="PackedScene" id=15]
 [ext_resource path="res://MainNodes/RecruitPanel.gd" type="Script" id=16]
+[ext_resource path="res://MainNodes/UndeadPanel.gd" type="Script" id=17]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 5 )
@@ -155,6 +156,7 @@ script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+QueueElement = ExtResource( 15 )
 
 [node name="Hex" type="Panel" parent="HUDcanvas/ContextMenus/OwnedHexMenus/OwnedHexTabs"]
 anchor_right = 1.0
@@ -667,6 +669,74 @@ margin_right = 505.0
 margin_bottom = 362.0
 enable_condition = "Osseorium"
 target = "Super Skeleton"
+
+[node name="UndeadPanel" type="Panel" parent="HUDcanvas/ContextMenus/OwnedHexMenus"]
+margin_left = 254.0
+margin_top = -290.0
+margin_right = 455.0
+margin_bottom = 39.0
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/UndeadPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/UndeadPanel/ScrollContainer"]
+margin_right = 74.0
+margin_bottom = 50.0
+
+[node name="ZombieContainer" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/UndeadPanel/ScrollContainer/VBoxContainer"]
+margin_right = 74.0
+margin_bottom = 14.0
+
+[node name="Title" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/UndeadPanel/ScrollContainer/VBoxContainer/ZombieContainer"]
+margin_right = 56.0
+margin_bottom = 14.0
+text = "Zombies"
+
+[node name="Number" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/UndeadPanel/ScrollContainer/VBoxContainer/ZombieContainer"]
+margin_left = 60.0
+margin_right = 68.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="SkeletonContainer" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/UndeadPanel/ScrollContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 74.0
+margin_bottom = 32.0
+
+[node name="Title" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/UndeadPanel/ScrollContainer/VBoxContainer/SkeletonContainer"]
+margin_right = 62.0
+margin_bottom = 14.0
+text = "Skeletons"
+
+[node name="Number" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/UndeadPanel/ScrollContainer/VBoxContainer/SkeletonContainer"]
+margin_left = 66.0
+margin_right = 74.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="ColossusContainer" type="HBoxContainer" parent="HUDcanvas/ContextMenus/OwnedHexMenus/UndeadPanel/ScrollContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 74.0
+margin_bottom = 50.0
+
+[node name="Title" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/UndeadPanel/ScrollContainer/VBoxContainer/ColossusContainer"]
+margin_right = 46.0
+margin_bottom = 14.0
+text = "Colossi"
+
+[node name="Number" type="Label" parent="HUDcanvas/ContextMenus/OwnedHexMenus/UndeadPanel/ScrollContainer/VBoxContainer/ColossusContainer"]
+margin_left = 50.0
+margin_right = 58.0
+margin_bottom = 14.0
+text = "0"
 
 [node name="UnownedHexMenus" type="Control" parent="HUDcanvas/ContextMenus"]
 visible = false
@@ -1312,10 +1382,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -1999.54
-margin_top = -3001.0
-margin_right = 2000.46
-margin_bottom = 2999.0
+margin_left = -2512.0
+margin_top = -2300.0
+margin_right = 1488.0
+margin_bottom = 3700.0
 [connection signal="owned_hex_clicked" from="." to="HUDcanvas/ContextMenus/OwnedHexMenus" method="new_hex_selected"]
 [connection signal="unowned_hex_clicked" from="." to="HUDcanvas/ContextMenus/UnownedHexMenus" method="new_hex_selected"]
 [connection signal="hex_clicked" from="Map/Hex" to="." method="_on_Hex_hex_clicked"]
@@ -1328,6 +1398,9 @@ margin_bottom = 2999.0
 [connection signal="build" from="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel/ScrollContainer/ScrollVBox/BuildingDescription" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_build"]
 [connection signal="build" from="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel/ScrollContainer/ScrollVBox/BuildingDescription2" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_build"]
 [connection signal="build" from="HUDcanvas/ContextMenus/OwnedHexMenus/BuildPanel/ScrollContainer/ScrollVBox/BuildingDescription3" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_build"]
+[connection signal="recruit" from="HUDcanvas/ContextMenus/OwnedHexMenus/RecruitPanel/RecruitmentBox/VBoxContainer/UndeadRecruitDescription" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_UndeadRecruitDescription_recruit"]
+[connection signal="recruit" from="HUDcanvas/ContextMenus/OwnedHexMenus/RecruitPanel/RecruitmentBox/VBoxContainer/UndeadRecruitDescription2" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_UndeadRecruitDescription_recruit"]
+[connection signal="recruit" from="HUDcanvas/ContextMenus/OwnedHexMenus/RecruitPanel/RecruitmentBox/VBoxContainer/UndeadRecruitDescription3" to="HUDcanvas/ContextMenus/OwnedHexMenus" method="_on_UndeadRecruitDescription_recruit"]
 [connection signal="tab_changed" from="HUDcanvas/ContextMenus/UnownedHexMenus/UnownedHexTabs" to="HUDcanvas/ContextMenus/UnownedHexMenus" method="_on_UnownedHexTabs_tab_changed"]
 [connection signal="tab_changed" from="HUDcanvas/ContextMenus/RivalHexMenu/RivalHexTabs" to="HUDcanvas/ContextMenus/RivalHexMenu" method="_on_OwnedHexTabs_tab_changed"]
 

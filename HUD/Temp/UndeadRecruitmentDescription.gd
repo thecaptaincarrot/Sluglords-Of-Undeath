@@ -83,8 +83,12 @@ func check_enabled(faction, island):
 		if condition_bool == false:
 			$HBoxContainer/VBoxContainer2/ErrorMessage.text = $HBoxContainer/VBoxContainer2/ErrorMessage.text + "\nRequires Osseorium"
 	
+	print(cost_bool)
+	print(condition_bool)
+	
 	if cost_bool and condition_bool:
 		$HBoxContainer/VBoxContainer2/RecruitButton.disabled = false
+		$HBoxContainer/VBoxContainer2/ErrorMessage.hide()
 	else:
 		$HBoxContainer/VBoxContainer2/RecruitButton.disabled = true
 		$HBoxContainer/VBoxContainer2/ErrorMessage.show()

@@ -2,7 +2,7 @@ extends "res://Undead/undead_blank.gd"
 
 
 func _ready():
-	identity = "Skeletal Colosus"
+	identity = "Colosus"
 	description = "In a stroke of mad genius, it was discovered that stacking two skeletons atop one another made them more than twice as effective..."
 
 	icon = "res://Undead/images/Super_Skeleton.png"

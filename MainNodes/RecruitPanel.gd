@@ -1,9 +1,9 @@
 extends Panel
 
+#the recruit panel should eventually dynamically create the descriptions based on the
+#undead that are available.
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+#also show unvailable checkbox.
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,3 +21,7 @@ func _on_RecruitButton_pressed():
 		hide()
 	else:
 		show()
+
+
+func get_descriptions():
+	return $RecruitmentBox/VBoxContainer.get_children()

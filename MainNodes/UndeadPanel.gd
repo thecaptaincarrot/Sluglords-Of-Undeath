@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends Panel
 
 
 # Declare member variables here. Examples:
@@ -15,12 +15,8 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func update_info(num, identity, turns):
-	$QueueNum.text = str(num) + "."
-	$QueueIdentity.text = identity
-	$TurnsLeft.text = str(turns)
 
-
-func _input(event):
-	pass
-	#eventually click to cancel.
+func update_counts(island):
+	var zombie_count = 0
+	var skeleton_count = 0
+	var colossus_count = 0

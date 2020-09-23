@@ -110,3 +110,15 @@ func _on_BuildButton_pressed():
 
 func _on_RecruitButton_pressed():
 	close_all_but_main()
+	for N in $RecruitPanel.get_descriptions():
+		N.check_enabled(faction, island)
+
+
+func _on_UndeadRecruitDescription_recruit(undead):
+	island.add_to_queue(undead)
+	faction.recruit_payment(undead)
+	refresh_all()
+	$RecruitPanel.show()
+	
+	for N in $RecruitPanel.get_descriptions():
+		N.check_enabled(faction, island)
