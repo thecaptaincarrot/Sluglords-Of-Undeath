@@ -32,47 +32,15 @@ signal sea_hex_clicked
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pregenerate_new_player_faction()
-	update_HUD()
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	update_HUD()
+	pass
+
 
 #Pregame Initializations
-func pregenerate_new_player_faction():
-	player_faction = Faction.instance()
-	player_faction.is_player = true
-	player_faction.initialize_new_faction()
-	
-	$Factions.add_child(player_faction)
-	
-	var random_deck = []
-	
-	for island in Islands.get_children():
-		if island.name == "The Pillar of Thras" or island.identity == "Hex":
-			pass
-		else:
-			random_deck.append(island)
-	randomize()
-	random_deck.shuffle()
-	var chosen_island = random_deck.front()
-	
-	player_faction.take_ownership(chosen_island)
-	
-	var possible_hexes = chosen_island.get_hexes()
-	possible_hexes.shuffle()
-	
-	var chosen_hex = possible_hexes.front()
-	
-	chosen_hex.insta_build(Osseorium)
-
-
-#Updates
-func update_HUD():
-	HUD.update_resources(player_faction.gold,player_faction.corpses,player_faction.contagion)
-	$HUDcanvas/PermanentHUD/PlaceholderTurnContainer/VBoxContainer/TurnPanel/HBoxContainer/TurnNum.text = str(turn)
 
 
 func _on_Hex_hex_clicked(hex):
