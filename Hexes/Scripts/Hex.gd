@@ -14,7 +14,6 @@ onready var HexNode = get_parent() #Will this ever fuck up?
 enum {EMPTY, SEA, LAND, PILLAR}
 
 var type
-var faction_owner
 
 var cube = Vector3(0,0,0)
 var axial = Vector2(0,0)
@@ -29,11 +28,6 @@ var border_thickness = 2
 
 var size = 64 #Obsolete because of graphic hex but used for some helper functions
 
-#
-var building
-var building_turns_left = 0
-
-var feature
 
 var is_selected = false
 var sea_facing
@@ -52,8 +46,6 @@ func _process(_delta):
 	match type:
 		EMPTY:
 			$HeightSensitive/Graphics/Hex.frame = 0
-		PILLAR:
-			$HeightSensitive/Graphics/Hex.frame = 1
 		SEA:
 			$HeightSensitive/Graphics/Hex.frame = 0
 		LAND:
@@ -134,34 +126,6 @@ func deselect():
 	$HeightSensitive/SelectionPolys.hide()
 
 #Update functions
-func end_of_turn():
-	if building_turns_left > 0:
-		building_turns_left -= 1
-	
-	update_production()
-	update_building_sprite()
-
-func update_production():
-	gold_production = 5
-	corpse_production = 1
-	contagion_production = 0
-	if building != null and building_turns_left <= 0: #Any reason why a building would provide resources if it has turns left on building? upgrades!?
-		gold_production += building.gold_production
-		corpse_production += building.corpse_production
-		contagion_production += building.contagion_production
-	if feature != null:
-		gold_production += feature.gold_production
-		corpse_production += feature.corpse_production
-		contagion_production += feature.contagion_production
-
-
-func update_building_sprite():
-	if building != null:
-		if building_turns_left <= 0:
-			$HeightSensitive/Graphics/Building.texture = load(building.texture)
-		else:
-			$HeightSensitive/Graphics/Building.texture = load(building.in_progress_texture)
-
 
 func check_sea_facing():
 	var neighbors = get_neighbors()
@@ -171,20 +135,3 @@ func check_sea_facing():
 			sea_facing = true
 			return true
 	return false
-
-#Building Functions:
-func insta_build(new_building): #Building is a camel case string name of building
-	#to be changed
-	building = new_building
-	update_building_sprite()
-	update_production()
-
-
-func build(new_building):
-	print("Trying to Build" + new_building.identity)
-	building = new_building
-	building_turns_left = new_building.build_time
-	update_building_sprite()
-	#Building is
-	
-

@@ -28,6 +28,4 @@ margin_top = -2300.0
 margin_right = 1488.0
 margin_bottom = 3700.0
 
-[connection signal="hex_clicked" from="Map/Hex" to="." method="_on_Hex_hex_clicked"]
-
 [editable path="Map"]

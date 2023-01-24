@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Hexes/Scripts/Island.gd" type="Script" id=1]
 
-[node name="Island" type="Node2D"]
+[node name="Island" type="Node2D" groups=["Island"]]
 script = ExtResource( 1 )
 
 [node name="Undead" type="Node" parent="."]

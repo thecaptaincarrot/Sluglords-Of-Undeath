@@ -36,11 +36,9 @@ func clear_map():
 		island.clear_owner()
 	islands.clear()
 	
-	for N in $Hex.get_children():
-		N.queue_free()
-
-	for N in $Island.get_children():
-		N.queue_free()
+	for N in get_children():
+		if N.is_in_group("Island"):
+			N.queue_free()
 
 	for q in range(map_size * -1, map_size + 1):
 		var new_dict = {}
@@ -66,8 +64,8 @@ func clear_map():
 			
 			new_hex.Map = self
 			
-			$Hex.add_child(new_hex)
-		hex_map[q] = new_dict
+#			$Hex.add_child(new_hex) !!!!!!no longer using $HEX!!!!!!
+		hex_map[q] = new_dict #New hexes are already stored here
 		
 	#center point is 0,0 don't center camera dumbass
 	#All tiles within map_size tiles of the point 0,0 are sea tiles, all others
@@ -90,21 +88,6 @@ func build_map_new():
 	#fill array with elements from the hex map, based not on their position
 	#but only eligibility.
 	var eligible_tiles = hex_map.duplicate(true)
-	#Clear the center tiles as eligible
-	for _i in range(0,3):
-		for q in range(-(len(eligible_tiles) - 1) / 2, 1 + (len(eligible_tiles) - 1) / 2) :
-			for r in range(-(len(eligible_tiles[q]) - 1) / 2, 1 + (len(eligible_tiles[q]) - 1) / 2):
-				if eligible_tiles[q][r] != null:
-					if eligible_tiles[q][r].distance_to_hex(center_hex) <= distance_between_islands + 1:
-						if eligible_tiles[q][r].distance_to_hex(center_hex) < 1:
-							var new_island = Island.instance()
-							new_island.hexes.append(hex_map[q][r])
-							hex_map[q][r].type = hex_map[q][r].PILLAR
-							new_island.init_pillar()
-							$Island.add_child(new_island)
-							islands.append(new_island)
-							hex_map[q][r].island = new_island
-						eligible_tiles[q][r] = null
 	#edge is not available
 	for q in range(-(len(eligible_tiles) - 1) / 2, 1 + (len(eligible_tiles) - 1) / 2) :
 		for r in range(-(len(eligible_tiles[q]) - 1) / 2, 1 + (len(eligible_tiles[q]) - 1) / 2):
@@ -118,7 +101,6 @@ func build_map_new():
 		var new_island = Island.instance()
 		#1. Build array of all possible Hexes for an initial hex tile and select one.
 		#	THIS IS NOT A CLEANUP OF ELIGIBLE HEXES, ONLY ADDING INTO HEX DECK
-		#Cannot
 		var hex_deck = []
 		for q in range(-(len(eligible_tiles) - 1) / 2, 1 + (len(eligible_tiles) - 1) / 2) :
 			for r in range(-(len(eligible_tiles[q]) - 1) / 2, 1 + (len(eligible_tiles[q]) - 1) / 2):
@@ -178,9 +160,10 @@ func build_map_new():
 			#If yes, commit island. in this case, set it all to land and remove adjacent (<= 1) tiles from eligible tiles
 			new_island.hexes = new_island_array
 			new_island.init_island()
-			$Island.add_child(new_island)
+			add_child(new_island)
 			islands.append(new_island)
 			for hex in new_island_array:
+				new_island.add_child(hex)
 				hex.island = new_island
 				
 			
@@ -191,6 +174,7 @@ func build_map_new():
 						for r in range(-(len(eligible_tiles[q]) - 1) / 2, 1 + (len(eligible_tiles[q]) - 1) / 2):
 							if eligible_tiles[q][r] != null:
 								if eligible_tiles[q][r].distance_to_hex(new_island_array[i]) <= distance_between_islands:
+									$Ocean.add_child(eligible_tiles[q][r])
 									eligible_tiles[q][r] = null
 			#6.1. turn all hexes to land, this is a temporary measure
 			for hex in new_island_array:
@@ -214,6 +198,8 @@ func build_map_new():
 			for hex in new_island_array:
 				var x = int(hex.axial.x)
 				var y = int(hex.axial.y)
+				$Ocean.add_child(hex)
+				print(hex)
 				eligible_tiles[x][y] = null
 		#7. repeat until there are no more eligible tiles then break.
 		#Commiting islands means to remove all adjacent tiles as being eligible
